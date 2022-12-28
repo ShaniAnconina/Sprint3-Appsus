@@ -1,10 +1,9 @@
+import { DynamicCmp } from "./dynamic-cmp.jsx"
 
 
-export function NotePreview({note}) {
-
-    console.log(note);
-
+export function NotePreview({ note }) {
     return <section className="note-preview">
-        <h1>Hello from note preview</h1>
+   {/* <DynamicCmp type={note.type} info={note.info} onChangeInfo={info => onChangeInfo(note.id, info)} /> */}
+   <DynamicCmp type={note.type} info={note.info} />
     </section>
 }

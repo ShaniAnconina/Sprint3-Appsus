@@ -1,8 +1,9 @@
+export function NoteTodos({ info }) {
 
-
-export function NoteTodos(){
-    
     return <section className="note-todos">
-        <h1>Hello from note todos</h1>
+        <p>{info.label}</p>
+        <ul>
+            {info.todos.map((todo) => <li key={todo.id}>{todo.txt}</li>)}
+        </ul>
     </section>
 }

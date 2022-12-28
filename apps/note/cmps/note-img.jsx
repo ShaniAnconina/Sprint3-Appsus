@@ -1,8 +1,9 @@
 
 
-export function NoteImg(){
-    
+export function NoteImg({info}){
+
     return <section className="note-img">
-        <h1>Hello from note img</h1>
+        <p>{info.title}</p>
+        <img src={info.url} alt="" />
     </section>
 }
