@@ -8,6 +8,7 @@ import { MailIndex } from "./apps/mail/views/mail-index.jsx"
 import { NoteIndex } from "./apps/note/views/note-index.jsx"
 import { Services } from "./views/services.jsx"
 import { Team } from "./views/team.jsx"
+import { MailDetails } from "./apps/mail/views/mail-details.jsx"
 
 
 
@@ -16,13 +17,14 @@ export function App() {
         <section className="app">
             <AppHeader />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />}>
+                <Route element={<Home />} path="/" />
+                <Route element={<About />} path="/about" >
                     <Route element={<Services />} path="/about" />
                     <Route element={<Team />} path="/about/team" />
                 </Route>
-                <Route path="/mail" element={<MailIndex />} />
-                <Route path="/note" element={<NoteIndex />} />
+                <Route element={<MailIndex />} path="/mail" />
+                <Route element={<MailDetails />} path="/mail/:mailId" />
+                <Route element={<NoteIndex />} path="/note" />
             </Routes>
         </section>
     </Router>

@@ -1,0 +1,57 @@
+/* ----- Roboto ----- */
+
+@font-face {
+    font-family: Roboto-Light;
+    src: url(../../fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(../../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Medium;
+    src: url(../../fonts/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(../../fonts/Roboto/Roboto-Bold.ttf);
+}
+
+/* ----- Product Sans ----- */
+
+@font-face {
+    font-family: Product-Sans-Regular;
+    src: url(../../fonts/Product-Sans/Product\ Sans\ Regular.ttf);
+}
+
+@font-face {
+    font-family: Product-Sans-Bold;
+    src: url(../../fonts/Product-Sans/Product\ Sans\ Bold.ttf);
+}
+
+/* ----- Google Sans ----- */
+
+@font-face {
+    font-family: Google-Sans-Regular;
+    src: url(../../fonts/Google-Sans/ProductSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: Google-Sans-Bold;
+    src: url(../../fonts/Google-Sans/ProductSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: Google-Sans-Medium;
+    src: url(../../fonts/Google-Sans/ProductSans-Medium.ttf);
+}
+
+/* ----- Font awsome ----- */
+
+@font-face {
+    font-family: fa;
+    src: url(/fonts/fontawesome/webfonts/fa-brands-400.ttf);
+}

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: Google-Sans-Regular,Product-Sans-Regular, Roboto-Regular, Arial;
 }
 
 h1,
@@ -20,4 +21,8 @@ img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+p {
+    margin: 0;
 }

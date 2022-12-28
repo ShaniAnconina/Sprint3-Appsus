@@ -1,0 +1,25 @@
+.mail-preview {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+    padding: 10px;
+    font-size: 0.9rem;
+    background-color: var(--clr0);
+    cursor: pointer;
+    font-family: Google-Sans-Bold, Roboto-Bold, Arial;
+}
+
+.mail-preview.read{
+    background-color: var(--clr4);
+    font-family: Google-Sans-Regular, Roboto-Regular, Arial;
+}
+
+.mail-preview .body{
+    color: var(--clr3);
+}
+
+.mail-preview .subject,
+.mail-preview .from {
+    color: var(--clr2);
+}
