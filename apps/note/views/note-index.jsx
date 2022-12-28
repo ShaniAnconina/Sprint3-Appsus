@@ -1,7 +1,8 @@
 const { useState, useEffect } = React
 
 
-import { NotePreview } from "../cmps/note-preview.jsx"
+import { NoteList } from "../cmps/note-list.jsx"
+import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState([])
@@ -11,12 +12,12 @@ export function NoteIndex() {
     }, [])
 
     function loadNotes(){
-        
+        noteService.query().then((setNotes))
     }
 
     return <section>
         <div>here its gona be a niput to search an input to add </div>
-        <NotePreview />
+        <NoteList notes={notes} />
     </section>
 
 }

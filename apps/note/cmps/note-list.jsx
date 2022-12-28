@@ -1,5 +1,8 @@
-export function NoteList() {
+import { NotePreview } from "../cmps/note-preview.jsx"
 
-    return <div>note list</div>
 
+export function NoteList({ notes }) {
+    return <section>
+        {notes.map(note => <div key={note.id}><NotePreview note={note} /></div> )}
+    </section>
 }
