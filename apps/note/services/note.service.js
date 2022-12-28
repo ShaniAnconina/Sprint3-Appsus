@@ -8,6 +8,7 @@ export const noteService = {
     query,
     remove,
     save,
+    get,
     getEmptyNoteInfo,
     getEmptyNote
 
@@ -19,7 +20,10 @@ function save(note){
         } else {
             return storageService.post(NOTE_KEY, note)
         }
-    
+}
+
+function get(id) {
+    return storageService.get(NOTE_KEY, id)
 }
 
 function getEmptyNoteInfo() {

@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 import { noteService } from "../services/note.service.js"
 
 
-export function NoteEdit() {
+export function NoteAdd({ loadNotes }) {
     const [noteInfoToEdit, setNoteInfoToEdit] = useState(noteService.getEmptyNoteInfo())
 
 
@@ -14,12 +14,13 @@ export function NoteEdit() {
 
     function onSaveNote(ev) {
         ev.preventDefault()
-        const note =  noteService.getEmptyNote()
+        const note = noteService.getEmptyNote()
         note.info = noteInfoToEdit
         noteService.save(note)
-        .then(()=> {
-            setNoteInfoToEdit(noteService.getEmptyNoteInfo())
-        })
+            .then(() => {
+                setNoteInfoToEdit(noteService.getEmptyNoteInfo())
+                loadNotes()
+            })
     }
 
     return <section className="note-edit">
