@@ -1,1 +1,6 @@
-console.log('Hi')
+
+
+export const noteService = {
+    query,
+    
+}
