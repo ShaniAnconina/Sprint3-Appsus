@@ -1,3 +1,4 @@
+import { MailHeader } from "../cmps/mail-header.jsx"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
@@ -18,19 +19,41 @@ export function MailDetails() {
     }
 
     function loadMail() {
-        console.log('mailId:', mailId)
         mailService.get(mailId)
             .then((mail) => setMail(mail))
             .catch((err) => {
                 console.log('Had issues in mail details', err)
                 navigate(-1)
             })
-
     }
 
-    return <section className="mail-details">
+    function onRemoveMail() {
+        mailService.remove(mail.id)
+            .then(() => {
+                navigate(-1)
+            })
+    }
 
-        <h1>Hello from mail details</h1>
-        <button onClick={onGoBack}>Go Back</button>
+
+    if (!mail) return <div>Loading...</div>
+    return <section className="mail-details">
+        <MailHeader />
+
+        <div className="mail-container">
+            <h1>{mail.subject}</h1>
+            <div className="info">
+                <div className="time"></div>
+                <div className="from-to">
+                    <img src="../assets/img/user.png" />
+                    <div>
+                        <p className="from">From: {mail.from}</p>
+                        <p className="to"> To: {mail.to}</p>
+                    </div>
+                </div>
+            </div>
+            <p className="mail-content">{mail.body}</p>
+            <button onClick={onGoBack}>Back</button>
+            <button onClick={onRemoveMail}>Delete</button>
+        </div>
     </section>
 }

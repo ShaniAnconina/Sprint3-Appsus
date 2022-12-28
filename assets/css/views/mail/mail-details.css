@@ -1,0 +1,38 @@
+.mail-details{
+    background-color: var(--clr8);
+    height: 100vh;
+    padding: 30px;
+}
+
+.mail-container{
+    background-color: var(--clr0);
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.mail-details .info{
+    display: grid;
+    grid-template-areas:
+        "from-to        time"
+        "mail-content   mail-content";
+}
+
+.mail-details .from-to {
+    grid-area: from-to;
+    display: flex;
+    align-items: center;
+}
+
+.mail-details .from-to img {
+    width: 50px;
+    border-radius: 100%;
+    margin-right: 20px;
+}
+
+.mail-details .time {
+    grid-area: time;
+}
+
+.mail-details .mail-content {
+    grid-area: mail-content;
+}

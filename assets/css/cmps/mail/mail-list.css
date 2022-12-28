@@ -1,3 +1,26 @@
+.mail-list{
+    background-color: var(--clr8);
+    height: 100vh;
+    padding: 30px;
+}
+
 .mail-list ul{
     list-style: none;
+    padding-inline-start: 0;
+}
+
+.mail-list ul li{
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+}
+
+.mail-list ul li:hover{
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    z-index: 2;
+    margin-bottom:0.5px;
+}
+
+.mail-list .inbox-container{
+    background-color: var(--clr0);
+    border-radius: 16px;
+    padding: 10px 0;
 }

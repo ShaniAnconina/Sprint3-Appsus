@@ -8,6 +8,7 @@ export const mailService = {
     query,
     get,
     remove,
+    save,
 }
 
 function query() {
@@ -24,6 +25,14 @@ function get(mailId) {
 function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
+
+function save(mail) {
+    if (mail.id) {
+      return storageService.put(MAIL_KEY, mail)
+    } else {
+      return storageService.post(MAIL_KEY, mail)
+    }
+  }
 
 function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani') {
     return {

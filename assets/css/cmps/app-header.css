@@ -1,9 +1,5 @@
-header {
-    background: lightcyan;
-    border-bottom: 2px solid white;
-}
-
 .app-header {
+    background: lightcyan;
     display: flex;
     justify-content: space-between;
     padding: 20px 0;

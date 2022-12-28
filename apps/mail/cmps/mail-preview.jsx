@@ -1,28 +1,23 @@
 import { mailService } from "../services/mail.service.js"
 
-const { useState, useEffect } = React
-const { useParams, useNavigate } = ReactRouterDOM
+const { useNavigate } = ReactRouterDOM
 
 
-export function MailPreview({ mail,onRemoveMail }) {
-
-    const [currMail, setCurrMail] = useState(mail)
+export function MailPreview({ mail, onRemoveMail }) {
     const navigate = useNavigate()
-
-    let read = (mail.isRead) ? 'read' : ''
 
     function onReadMail() {
         mail.isRead = true
-        setCurrMail(mail)
+        mailService.save(mail)
         navigate(`/mail/${mail.id}`)
     }
 
-    function onDelete(ev){
+    function onDelete(ev) {
         ev.stopPropagation()
         onRemoveMail(mail.id)
     }
 
-    return <section className={`mail-preview ${read}`} onClick={onReadMail}>
+    return <section className={mail.isRead ? 'mail-preview read' : 'mail-preview'} onClick={onReadMail}>
         <div className="msg-prev">
             <p className="from">{mail.from}</p>
             <p className="subject">{mail.subject} </p>
