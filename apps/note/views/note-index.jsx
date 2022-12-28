@@ -35,7 +35,7 @@ export function NoteIndex() {
 
     let isEditNote = (noteToEdit) ? 'edit-mode' : ''
 
-    return <section className={isEditNote}>
+    return <section className={`note-index ${isEditNote}`}>
 
         <NoteAdd loadNotes={loadNotes} />
         <NoteList onEditNote={onEditNote} onRemoveNote={onRemoveNote} notes={notes} />

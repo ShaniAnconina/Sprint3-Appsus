@@ -23,7 +23,7 @@ export function NoteAdd({ loadNotes }) {
             })
     }
 
-    return <section className="note-edit">
+    return <section className="note-add">
         <form onSubmit={onSaveNote}>
             <input type="text"
                 name="txt"

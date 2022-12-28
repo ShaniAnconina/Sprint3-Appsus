@@ -14,7 +14,6 @@
 @import './views/mail/mail-index.css'; /* mail */
 @import './views/mail/mail-details.css'; /* mail */
 @import './views/note/note-index.css'; /* note */
-@import './views/note/note-edit.css'; /* note */
 
 /* Cmps */
 @import './cmps/user-msg.css';
@@ -31,3 +30,5 @@
 @import './cmps/note/note-txt.css'; /* note */
 @import './cmps/note/note-video.css'; /* note */
 @import './cmps/note/note-todos.css'; /* note */
+@import './views/note/note-edit.css'; /* note */
+@import './views/note/note-add.css'; /* note */
