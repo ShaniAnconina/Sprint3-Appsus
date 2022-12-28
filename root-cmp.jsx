@@ -15,7 +15,11 @@ export function App() {
             <AppHeader />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/about" element={<About />}>
+                    <Route element={<Services />} path="/about" />
+                    <Route element={<Team />} path="/about/team" />
+                </Route>
+
                 <Route path="/mail" element={<MailIndex />} />
                 <Route path="/note" element={<NoteIndex />} />
             </Routes>
