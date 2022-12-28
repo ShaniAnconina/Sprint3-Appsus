@@ -1,24 +1,32 @@
 /* Setup */
-
 @import './setup/variables.css';
-/* @import './setup/fonts.css'; */
 
 /* Basics */
-
 @import './basics/base.css';
 @import './basics/helpers.css';
-/* @import './basics/layout.css'; */
 
 /* Views */
 @import './views/home.css';
-
-/* @import './apps/note/views/note-app.css'; */
-
-/* @import './apps/mail/views/mail-app.css'; */
+@import './views/about.css';
+@import './views/services.css';
+@import './views/team.css';
+@import './views/mail/mail-index.css'; /* mail */
+@import './views/mail/mail-details.css'; /* mail */
+@import './views/note/note-index.css'; /* note */
+@import './views/note/note-edit.css'; /* note */
 
 /* Cmps */
-
 @import './cmps/user-msg.css';
 @import './cmps/app-header.css';
-
-/* @import './apps/mail/cmps/mail-list.css'; */
+@import './cmps/mail/mail-compose.css'; /* mail */
+@import './cmps/mail/mail-filter.css'; /* mail */
+@import './cmps/mail/mail-folder-list.css'; /* mail */
+@import './cmps/mail/mail-list.css'; /* mail */
+@import './cmps/mail/mail-preview.css'; /* mail */
+@import './cmps/note/note-filter.css'; /* note */
+@import './cmps/note/note-list.css'; /* note */
+@import './cmps/note/note-preview.css'; /* note */
+@import './cmps/note/note-img.css'; /* note */
+@import './cmps/note/note-txt.css'; /* note */
+@import './cmps/note/note-video.css'; /* note */
+@import './cmps/note/note-todos.css'; /* note */
