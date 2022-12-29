@@ -1,8 +1,29 @@
+.note-preview-container {
+    border: .5px solid black;
+    border-radius: 8px;
+    width: 240px;
+    height: fit-content;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-preview-container.edit-mode {
+    opacity: 0;
+}
+
+
+
+.note-preview-container img {
+    height: auto;
+}
+
 .note-preview {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    background-color: aqua;
 }

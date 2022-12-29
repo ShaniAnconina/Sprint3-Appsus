@@ -31,5 +31,5 @@
 @import './cmps/note/note-txt.css'; /* note */
 @import './cmps/note/note-video.css'; /* note */
 @import './cmps/note/note-todos.css'; /* note */
-@import './views/note/note-edit.css'; /* note */
-@import './views/note/note-add.css'; /* note */
+@import './cmps/note/note-edit.css'; /* note */
+@import './cmps/note/note-add.css'; /* note */
