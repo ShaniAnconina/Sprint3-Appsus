@@ -31,9 +31,10 @@ function getEmptyNoteInfo() {
 
 function getEmptyNote() {
     return {
-        type: "note-txt", isPinned: false
+        type: "note-txt", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
     }
 }
+
 
 function remove(id) {
     return storageService.remove(NOTE_KEY, id)
@@ -86,7 +87,7 @@ function _createNote() {
         ]
 
         notes.forEach((note) => {
-            note.style = {backgroundColor : utilService.getRandomColor()}
+            note.style = { backgroundColor: utilService.getRandomColor() }
             if (note.type === 'note-todos') note.info.todos.forEach((todo) => todo.id = utilService.makeId())
         })
         utilService.saveToStorage(NOTE_KEY, notes)

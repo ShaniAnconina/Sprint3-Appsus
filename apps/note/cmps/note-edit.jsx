@@ -48,6 +48,7 @@ export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
 
             <div className='edit-ntn'>
                 <button onClick={() => { onRemoveNote(noteToEdit.id) }}>X</button>
+                
                 <input type="color"
                     name="backgroundColor"
                     id="backgroundColor"
