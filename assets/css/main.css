@@ -22,6 +22,7 @@
 @import './cmps/mail/mail-filter.css'; /* mail */
 @import './cmps/mail/mail-folder-list.css'; /* mail */
 @import './cmps/mail/mail-list.css'; /* mail */
+@import './cmps/mail/mail-header.css'; /* mail */
 @import './cmps/mail/mail-preview.css'; /* mail */
 @import './cmps/note/note-filter.css'; /* note */
 @import './cmps/note/note-list.css'; /* note */

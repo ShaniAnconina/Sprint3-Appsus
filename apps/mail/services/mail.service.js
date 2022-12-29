@@ -9,12 +9,26 @@ export const mailService = {
     get,
     remove,
     save,
+    getDefaultFilter,
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
-        .then(mail => {
-            return mail
+        .then(mails => {
+            console.log('mails:', mails)
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                mails = mails.filter(mail => regex.test(mail.subject) || regex.test(mail.from) || regex.test(mail.body))
+            }
+            if (filterBy.isRead) {
+                if (filterBy.isRead === 'read') {
+                    mails = mails.filter(mail => mail.isRead)
+                }
+                if (filterBy.isRead === 'unread') {
+                    mails = mails.filter(mail => !mail.isRead)
+                }
+            }
+            return mails
         })
 }
 
@@ -28,11 +42,15 @@ function remove(mailId) {
 
 function save(mail) {
     if (mail.id) {
-      return storageService.put(MAIL_KEY, mail)
+        return storageService.put(MAIL_KEY, mail)
     } else {
-      return storageService.post(MAIL_KEY, mail)
+        return storageService.post(MAIL_KEY, mail)
     }
-  }
+}
+
+function getDefaultFilter() {
+    return { txt: '', isRead: '' }
+}
 
 function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani') {
     return {

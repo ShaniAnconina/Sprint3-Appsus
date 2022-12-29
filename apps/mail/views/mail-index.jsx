@@ -6,18 +6,23 @@ import { mailService } from '../services/mail.service.js'
 export function MailIndex() {
     const [mails, setMails] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [filterBy])
 
     function loadMails() {
         setIsLoading(true)
-        mailService.query()
-            .then((mails => {
-                setMails(mails)
+        mailService.query(filterBy)
+            .then((mailsToUpdate => {
+                setMails(mailsToUpdate)
                 setIsLoading(false)
             }))
+    }
+
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
     }
 
     function onRemoveMail(mailId) {
@@ -29,7 +34,7 @@ export function MailIndex() {
     }
 
     return <section className="mail-index">
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} />}
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} />}
         {isLoading && <div>Loading..</div>}
     </section>
 }

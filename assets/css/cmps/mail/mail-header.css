@@ -1,0 +1,9 @@
+.gmail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gmail-header img {
+    width: 110px;
+}
