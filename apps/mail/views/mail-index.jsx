@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 
+import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailList } from '../cmps/mail-list.jsx'
 import { mailService } from '../services/mail.service.js'
 
@@ -34,7 +35,8 @@ export function MailIndex() {
     }
 
     return <section className="mail-index">
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} />}
+        <MailHeader onSetFilter={onSetFilter} />
+        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} loadMails={loadMails} />}
         {isLoading && <div>Loading..</div>}
     </section>
 }

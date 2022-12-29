@@ -8,7 +8,8 @@ export const utilService = {
     getMonthName,
     loadFromStorage,
     saveToStorage,
-    getRandomColor
+    getRandomColor,
+    getPastRelativeFrom
 }
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -64,12 +65,11 @@ function getDayName(date, locale) {
     return date.toLocaleDateString(locale, { weekday: 'long' })
 }
 
-
 function getMonthName(date) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]
-    return monthNames[date.getMonth()]
+    return monthNames[date]
 }
 
 function saveToStorage(key, val) {
@@ -79,4 +79,23 @@ function saveToStorage(key, val) {
 function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
+}
+
+function getPastRelativeFrom(passedTimeStamp) {
+    const diff = Date.now() - new Date(passedTimeStamp)
+    const seconds = Math.round(diff / 1000)
+    const minutes = Math.round(seconds / 60)
+    const hours = Math.round(minutes / 60)
+    const days = Math.round(hours / 24)
+    const date = new Date(passedTimeStamp).getDate()
+    const month = getMonthName(new Date(passedTimeStamp).getMonth())
+    
+    const formatter = new Intl.RelativeTimeFormat('en-US', { numeric: 'auto' })
+    if (seconds <= 120) return ('Just now')
+    if (minutes <= 10) return ('few minutes ago')
+    if (minutes <= 60) return (formatter.format(-minutes, 'minutes'))
+    if (hours <= 1.5) return ('about an hour ago')
+    if (hours <= 24) return formatter.format(-hours, 'hours')
+    if (days <= 2) return formatter.format(-days, 'hours')
+    return month + date
 }

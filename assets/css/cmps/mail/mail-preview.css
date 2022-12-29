@@ -11,16 +11,25 @@
     font-family: Google-Sans-Bold, Roboto-Bold, Arial;
 }
 
-.mail-preview.read{
+.mail-preview.read {
     background-color: var(--clr7);
     font-family: Google-Sans-Regular, Roboto-Regular, Arial;
 }
 
-.mail-preview .body{
+.mail-preview .body {
     color: var(--clr3);
 }
 
 .mail-preview .subject,
 .mail-preview .from {
     color: var(--clr2);
+}
+
+.mail-preview .prev-btns {
+    width: 80px;
+    display: none;
+}
+
+.mail-preview:hover .prev-btns {
+    display: inline-block;
 }

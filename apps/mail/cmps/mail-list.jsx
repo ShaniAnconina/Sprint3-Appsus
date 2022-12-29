@@ -5,16 +5,12 @@ import { MailPreview } from './mail-preview.jsx'
 import { MailCompose } from './mail-compose.jsx'
 // const { useNavigate } = ReactRouterDOM
 
-export function MailList({ mails, onRemoveMail, onSetFilter }) {
+export function MailList({ mails, onRemoveMail, onSetFilter,loadMails }) {
     const [isModal, setIsModal] = useState(false)
     // const navigate = useNavigate()
 
-    function onCreateMail() {
-        // navigate('/note/')
-    }
-
     return <section className="mail-list">
-        <MailHeader onSetFilter={onSetFilter} />
+        {/* <MailHeader onSetFilter={onSetFilter} /> */}
         <div className="inbox-container">
             <button onClick={() => setIsModal(true)}>New email</button>
             <div>unread emails:</div>
@@ -23,7 +19,7 @@ export function MailList({ mails, onRemoveMail, onSetFilter }) {
                     <MailPreview mail={mail} onRemoveMail={onRemoveMail} />
                 </li>)}
             </ul>
-            {isModal && <MailCompose />}
+            {isModal && <MailCompose setIsModal={setIsModal} loadMails={loadMails} />}
         </div>
     </section>
 }

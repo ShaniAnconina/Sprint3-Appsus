@@ -2,6 +2,7 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 _createMails()
 
 export const mailService = {
@@ -10,12 +11,13 @@ export const mailService = {
     remove,
     save,
     getDefaultFilter,
+    getEmptyMail,
+    getTimePassed
 }
 
 function query(filterBy = getDefaultFilter()) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log('mails:', mails)
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject) || regex.test(mail.from) || regex.test(mail.body))
@@ -52,16 +54,19 @@ function getDefaultFilter() {
     return { txt: '', isRead: '' }
 }
 
-function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani') {
+function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani', to = 'momo@momo.com') {
     return {
-        id: utilService.makeId(),
         subject,
         body,
         isRead: false,
         sentAt: Date.now(),
         from,
-        to: 'momo@momo.com'
+        to,
     }
+}
+
+function getTimePassed(sentAtTime){
+    return utilService.getPastRelativeFrom(sentAtTime)
 }
 
 function _createMails() {
@@ -79,5 +84,7 @@ function _createMails() {
 }
 
 function _createMail(subject, body, from) {
-    return getEmptyMail(subject, body, from)
+    const mail = getEmptyMail(subject, body, from)
+    mail.id = utilService.makeId()
+    return mail
 }

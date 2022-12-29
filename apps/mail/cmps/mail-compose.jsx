@@ -1,22 +1,64 @@
+import { mailService } from "../services/mail.service.js"
+import { eventBusService,showSuccessMsg } from "../../../services/event-bus.service.js"
+
+const { useState } = React
+
+export function MailCompose({ setIsModal, loadMails }) {
+    const [mail, setMail] = useState(mailService.getEmptyMail())
 
 
-export function MailCompose() {
+    function onCloseNewMail() {
+        setIsModal(false)
+    }
+
+    function onSendMail(ev) {
+        ev.preventDefault()
+        mailService.save(mail)
+            .then(() => {
+                setIsModal(false)
+                loadMails()
+                // showSuccessMsg('Email sent')
+            })
+    }
+
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        setMail((prevMail) => {
+            return { ...prevMail, [field]: value }
+        })
+    }
 
     return <section className="mail-compose">
         <div className="new-mail">
             <p>New email</p>
-            <button>X</button>
+            <button onClick={onCloseNewMail}>X</button>
         </div>
         <div className="mail-content">
-            <form>
-                <input type="text" className="to" placeholder="To" />
-                <hr />
-                <input type="text" className="subject" placeholder="Subject" />
-                <hr />
-                <input type="text" className="content" />
+            <form onSubmit={onSendMail}>
+
+                <input type="email"
+                    name="to"
+                    className="to"
+                    placeholder="To"
+                    // value={mail.to}
+                    onChange={handleChange} />
+
+                <input type="text"
+                    name="subject"
+                    className="subject"
+                    placeholder="Subject"
+                    // value={mail.subject}
+                    onChange={handleChange} />
+
+                <input type="text"
+                    name="body"
+                    className="content"
+                    // value={mail.body}
+                    onChange={handleChange} />
+
                 <div className="send-delete">
                     <button className="send">Send</button>
-                    <button>Delete</button>
+                    <button type="button">Delete</button>
                 </div>
             </form>
         </div>

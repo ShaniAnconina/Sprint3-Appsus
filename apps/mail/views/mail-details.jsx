@@ -37,7 +37,7 @@ export function MailDetails() {
 
     if (!mail) return <div>Loading...</div>
     return <section className="mail-details">
-        <MailHeader />
+        {/* <MailHeader /> */}
 
         <div className="mail-container">
             <h1>{mail.subject}</h1>
