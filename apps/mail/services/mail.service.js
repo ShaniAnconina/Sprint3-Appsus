@@ -12,7 +12,8 @@ export const mailService = {
     save,
     getDefaultFilter,
     getEmptyMail,
-    getTimePassed
+    getTimePassed,
+    getLoggedinUser
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -50,11 +51,15 @@ function save(mail) {
     }
 }
 
+function getLoggedinUser(){
+    return loggedinUser
+}
+
 function getDefaultFilter() {
     return { txt: '', isRead: '' }
 }
 
-function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani', to = 'momo@momo.com') {
+function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'Shani', to = 'user@appsus.com') {
     return {
         subject,
         body,
