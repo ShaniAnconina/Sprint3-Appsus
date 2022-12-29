@@ -11,15 +11,14 @@ export const noteService = {
     get,
     getEmptyNoteInfo,
     getEmptyNote
-
 }
 
-function save(note){
-        if (note.id) {
-            return storageService.put(NOTE_KEY, note)
-        } else {
-            return storageService.post(NOTE_KEY, note)
-        }
+function save(note) {
+    if (note.id) {
+        return storageService.put(NOTE_KEY, note)
+    } else {
+        return storageService.post(NOTE_KEY, note)
+    }
 }
 
 function get(id) {
@@ -50,25 +49,46 @@ function _createNote() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: "n101", type: "note-txt", isPinned: true,
-                info: { txt: "Fullstack Me Baby!" }
+                id: 'n101',
+                createdAt: 1112222,
+                type: 'note-txt',
+                isPinned: true,
+                style: { backgroundColor: '#00d' },
+                info: { txt: 'Fullstack Me Baby!' }
             },
+
             {
-                id: "n102", type: "note-img",
-                info: { url: "https://flxt.tmsimg.com/assets/p185008_b_h10_ai.jpg", title: "The office" },
-                style: { backgroundColor: "#00d" }
-            },
-            {
-                id: "n103", type: "note-todos",
+                id: 'n102',
+                type: 'note-img',
+                isPinned: false,
                 info: {
-                    label: "Get my stuff together",
-                    todos: [
-                        { txt: "Driving liscence", doneAt: null, id: utilService.makeId() },
-                        { txt: "Coding power", doneAt: 187111111, id: utilService.makeId() }
-                    ]
+                    url: 'http://some-img/me',
+                    title: 'Bobi and Me'
+                },
+                style: { backgroundColor: '#00d' }
+            },
+            {
+                id: 'n103'
+                , type: 'note-todos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [{
+                        txt: 'Driving liscence',
+                        doneAt: null
+                    },
+                    {
+                        txt: 'Coding power',
+                        doneAt: 187111111
+                    }]
                 }
             }
         ]
+
+        notes.forEach((note) => {
+            note.style = {backgroundColor : utilService.getRandomColor()}
+            if (note.type === 'note-todos') note.info.todos.forEach((todo) => todo.id = utilService.makeId())
+        })
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
