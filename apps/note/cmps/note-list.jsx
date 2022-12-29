@@ -13,8 +13,8 @@ export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes }) {
     let notPinedsNotes = []
 
     useEffect(() => {
-        console.log(notes)
         if (notes.some((note) => note.isPinned)) setIsPinnedList(true)
+        else setIsPinnedList(false)
     }, [notes])
 
     if (isPinnedList) {
@@ -29,8 +29,7 @@ export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes }) {
         noteService.get(noteId)
             .then((note) => {
                 note.isPinned = !note.isPinned
-                noteService.save(note)
-                    .then(loadNotes())
+                noteService.save(note).then(() => loadNotes())
             })
     }
 
@@ -38,62 +37,11 @@ export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes }) {
     return <section className="note-list">
         {isPinnedList && <section>
             <h3>Pinned notes</h3>
-            {pinedsNotes.map(note => <article key={note.id}
-                style={{ backgroundColor: note.style.backgroundColor }}
-                className={noteId === note.id ? "note-preview-container  edit-mode" : "note-preview-container"}
-                onClick={() => onEditNote(note.id)}>
-
-                <button onClick={(ev) => { onPinNote(ev, note.id) }} className="pin-btn">Pin</button>
-
-                <NotePreview note={note} />
-
-                <div className='preview-btn'>
-                    <button onClick={(ev) => {
-                        ev.stopPropagation()
-                        onRemoveNote(note.id)
-                    }}>X</button>
-                </div>
-            </article>)}
-
-
+            {pinedsNotes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
             <h3>Notes</h3>
-            {notPinedsNotes.map(note => <article key={note.id}
-                style={{ backgroundColor: note.style.backgroundColor }}
-                className={noteId === note.id ? "note-preview-container  edit-mode" : "note-preview-container"}
-                onClick={() => onEditNote(note.id)}>
-
-                <button onClick={(ev) => { onPinNote(ev, note.id) }} className="pin-btn">Pin</button>
-
-                <NotePreview note={note} />
-
-                <div className='preview-btn'>
-                    <button onClick={(ev) => {
-                        ev.stopPropagation()
-                        onRemoveNote(note.id)
-                    }}>X</button>
-                </div>
-            </article>)}
+            {notPinedsNotes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
         </section >}
 
-
-        {!isPinnedList && notes.map(note =>
-            <article key={note.id}
-                style={{ backgroundColor: note.style.backgroundColor }}
-                className={noteId === note.id ? "note-preview-container  edit-mode" : "note-preview-container"}
-                onClick={() => onEditNote(note.id)}>
-
-                <button onClick={(ev) => { onPinNote(ev, note.id) }} className="pin-btn">Pin</button>
-
-                <NotePreview note={note} />
-
-                <div className='preview-btn'>
-                    <button onClick={(ev) => {
-                        ev.stopPropagation()
-                        onRemoveNote(note.id)
-                    }}>X</button>
-                </div>
-            </article>)}
-
-
+        {!isPinnedList && notes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
     </section>
 }
