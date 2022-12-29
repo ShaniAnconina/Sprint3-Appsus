@@ -24,15 +24,15 @@ export function NoteAdd({ loadNotes }) {
     }
 
     return <section className="note-add">
-        <form onSubmit={onSaveNote}>
-            <input type="text"
-                name="txt"
-                id="title"
-                placeholder="Enter your note..."
-                value={noteInfoToEdit.txt}
-                onChange={handleChange}
-            />
-            <button>Save</button>
-        </form>
-    </section>
+            <form onSubmit={onSaveNote}>
+                <input type="text"
+                    name="txt"
+                    id="title"
+                    value={noteInfoToEdit.txt}
+                    onChange={handleChange}
+                    onClick={(ev) => {ev.stopPropagation()}} 
+                />
+                <button onClick={(ev) => {ev.stopPropagation()}}  >Save</button>
+            </form>
+    </section >
 }
