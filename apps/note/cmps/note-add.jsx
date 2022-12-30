@@ -27,8 +27,8 @@ export function NoteAdd({ loadNotes }) {
         <DynamicCmp typeNoteToEdit={typeNoteToEdit} />
 
         <button onClick={() => setTypeNoteToEdit('note-img')} className="fa-solid img" ></button>
-        {/* <button className="fa-solid img" ></button>
-            <button className="fa-solid img" ></button> */}
+        <button className="fa-solid video" ></button>
+            {/* <button className="fa-solid img" ></button> */}
 
     </section >
 
