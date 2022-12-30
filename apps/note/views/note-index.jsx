@@ -2,14 +2,13 @@ const { useState, useEffect } = React
 
 const { useParams, useNavigate } = ReactRouterDOM
 
+import { utilService } from "../../../services/util.service.js"
+import { noteService } from "../services/note.service.js"
+
 import { NoteEdit } from "../cmps/note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
-import { noteService } from "../services/note.service.js"
 import { NoteAdd } from "../cmps/note-add.jsx"
-import { utilService } from "../../../services/util.service.js"
 
-
-//TODO: creat a cmps for img and video
 
 export function NoteIndex() {
     const [notes, setNotes] = useState([])
