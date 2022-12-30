@@ -1,8 +1,7 @@
-import { noteService } from "../services/note.service.JS"
-
 const { useParams, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
+import { noteService } from "../services/note.service.JS"
 
 export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
     const navigate = useNavigate()
@@ -35,7 +34,7 @@ export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
 
     return <section onClick={closeEditScreen} className="note-edit-screen">
 
-        <article  style={{backgroundColor: noteToEdit.style.backgroundColor}} onClick={(ev) => ev.stopPropagation()} className="note-edit">
+        <article style={{ backgroundColor: noteToEdit.style.backgroundColor }} onClick={(ev) => ev.stopPropagation()} className="note-edit">
             <form onSubmit={(ev) => ev.preventDefault()} >
                 <input type="text"
                     name="txt"
@@ -48,7 +47,7 @@ export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
 
             <div className='edit-ntn'>
                 <button onClick={() => { onRemoveNote(noteToEdit.id) }}>X</button>
-                
+
                 <input type="color"
                     name="backgroundColor"
                     id="backgroundColor"
