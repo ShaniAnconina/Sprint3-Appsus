@@ -28,3 +28,25 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.edit-btn .fa-solid.delete::before {
+    content: "\f2ed";
+}
+
+
+/* .edit-btn .fa-solid.pin::before {
+    content: "\f08d";
+}
+
+.preview-btn .fa-solid.duplicat::before {
+    content: "\f0c5";
+}
+
+.preview-btn .fa-solid.palette::before {
+    content: "\f53f";
+}
+
+.preview-btn .fa-solid.send::before {
+    content: "\f1d8";
+} */
+

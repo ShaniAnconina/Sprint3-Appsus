@@ -43,10 +43,12 @@ export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
                     value={noteInfoToEdit.txt}
                     onChange={handleChange}
                 />
+                
             </form>
 
-            <div className='edit-ntn'>
-                <button onClick={() => { onRemoveNote(noteToEdit.id) }}>X</button>
+            <div className='edit-btn'>
+                <button className="fa-solid delete" onClick={() => { onRemoveNote(noteToEdit.id) }}></button>
+
 
                 <input type="color"
                     name="backgroundColor"
