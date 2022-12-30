@@ -1,7 +1,7 @@
 const { useParams, useNavigate } = ReactRouterDOM
 const { useState, useEffect } = React
 
-import { noteService } from "../services/note.service.JS"
+import { noteService } from "../services/note.service.js"
 
 export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
     const navigate = useNavigate()
