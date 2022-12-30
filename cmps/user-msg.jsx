@@ -1,4 +1,4 @@
-import { eventBusService } from "../services/event-bus.service"
+import { eventBusService } from "../services/event-bus.service.js"
 
 const { useState, useEffect, useRef } = React
 

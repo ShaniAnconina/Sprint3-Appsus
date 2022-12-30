@@ -60,7 +60,6 @@
 
 .mail-compose .mail-content form .send:hover {
     background-color: #1b61d1;
-
 }
 
 .mail-compose .mail-content form .send-delete {
@@ -70,4 +69,10 @@
 
 .mail-compose .mail-content hr {
     margin: 0;
+}
+
+/* fontawesome */
+
+.mail-compose .fa-regular.delete::before {
+    content: "\f2ed";
 }

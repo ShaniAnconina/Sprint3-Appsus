@@ -33,10 +33,17 @@
 .mail-preview:hover .prev-btns {
     display: inline-block;
 }
-.passed-time{
+
+.passed-time {
     font-family: Google-Sans-Regular, Roboto-Regular, Arial;
     font-size: 0.8rem;
 }
+
+.mail-preview:hover .passed-time {
+   display: none;
+}
+
+/* fontawesome */
 
 .mail-preview .fa-regular.delete::before {
     content: "\f2ed";

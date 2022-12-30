@@ -28,10 +28,3 @@ export function showSuccessMsg(txt) {
 export function showErrorMsg(txt) {
     showUserMsg({ txt, type: 'error' })
 }
-
-// ----------- Header ----------- //
-
-export function showMailHeader(msg) {
-    eventBusService.emit('show-mail-header', msg)
-}
-

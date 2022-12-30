@@ -1,24 +1,22 @@
-.mail-details{
+.mail-details {
     background-color: var(--clr8);
     height: 100vh;
-    padding: 30px;
+    padding: 0 30px;
 }
 
-.mail-container{
+.mail-container {
     background-color: var(--clr0);
     border-radius: 16px;
     padding: 30px;
 }
 
-.mail-details .info{
-    display: grid;
-    grid-template-areas:
-        "from-to        time"
-        "mail-content   mail-content";
+.mail-details .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .mail-details .from-to {
-    grid-area: from-to;
     display: flex;
     align-items: center;
 }
@@ -29,13 +27,20 @@
     margin-right: 20px;
 }
 
-.mail-details .time {
-    grid-area: time;
+.mail-details .passed-time {
+    font-family: Google-Sans-Regular, Roboto-Regular, Arial;
+    font-size: 0.8rem;
 }
 
-.mail-details .mail-content {
-    grid-area: mail-content;
+.mail-details .mail-content h1 {
+    margin-top: 50px;
 }
+
+.mail-details .mail-content p {
+    margin-bottom: 50px;
+}
+
+/* fontawesome */
 
 .mail-details .fa-regular.delete::before {
     content: "\f2ed";

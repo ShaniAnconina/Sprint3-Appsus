@@ -1,14 +1,10 @@
-import { MailHeader } from "../cmps/mail-header.jsx"
+import { MailCompose } from "../cmps/mail-compose.jsx"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
-// const { useParams, useNavigate } = ReactRouterDOM
 
-
-export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
+export function MailDetails({ mailId, setSelcetedMail, onRemoveMail, setIsModal, loadMails,isModal }) {
     const [mail, setMail] = useState(null)
-    // const { mailId } = useParams()
-    // const navigate = useNavigate()
 
     useEffect(() => {
         loadMail()
@@ -16,7 +12,6 @@ export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
 
     function onGoBack() {
         setSelcetedMail(null)
-        // navigate('/mail/')
     }
 
     function loadMail() {
@@ -29,17 +24,16 @@ export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
     }
 
     function onRemove() {
-                setSelcetedMail(null)
-                onRemoveMail(mail.id)
+        setSelcetedMail(null)
+        onRemoveMail(mail, mail.id)
     }
 
 
     if (!mail) return <div>Loading...</div>
+    const passedTime = mailService.getTimePassed(mail.sentAt)
     return <section className="mail-details">
         <div className="mail-container">
-            <h1>{mail.subject}</h1>
             <div className="info">
-                <div className="time"></div>
                 <div className="from-to">
                     <img src="../assets/img/user.png" />
                     <div>
@@ -47,10 +41,17 @@ export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
                         <p className="to"> To: {mail.to}</p>
                     </div>
                 </div>
+                <div className="passed-time">
+                    {passedTime}
+                </div>
             </div>
-            <p className="mail-content">{mail.body}</p>
-            <button onClick={onGoBack} className="fa-solid back"></button>
-            <button onClick={onRemove} className="fa-regular delete"></button>
+            <div className="mail-content">
+                <h1>{mail.subject}</h1>
+                <p>{mail.body}</p>
+            </div>
+            <button onClick={onGoBack} title="Go back" className="fa-solid back"></button>
+            <button onClick={onRemove} title="Delete" className="fa-regular delete"></button>
         </div>
+        {isModal && <MailCompose setIsModal={setIsModal} loadMails={loadMails} />}
     </section>
 }
