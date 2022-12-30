@@ -1,0 +1,41 @@
+.mail-filter {
+    margin: 0;
+}
+
+.mail-filter form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--clr10);
+    width: 700px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.mail-filter form:focus {
+    background-color: var(--clr0);
+}
+
+.mail-filter form input.txt {
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+    width: 500px;
+    height: 40px;
+}
+
+.mail-filter form input.txt:focus-visible {
+    outline: none;
+}
+
+.mail-filter form .isRead {
+    border: none;
+    background-color: transparent;
+}
+
+/* fontawesome */
+
+.mail-filter .fa-solid.search::before {
+    content: "\f002";
+}

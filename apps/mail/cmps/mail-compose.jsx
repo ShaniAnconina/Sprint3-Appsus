@@ -17,7 +17,10 @@ export function MailCompose({ setIsModal, loadMails }) {
             .then(() => {
                 setIsModal(false)
                 loadMails()
-                // showSuccessMsg('Email sent')
+                showSuccessMsg('Email sent successfully!')
+            })
+            .catch(()=>{
+                showErrorMsg('Email send failed')
             })
     }
 
@@ -31,7 +34,7 @@ export function MailCompose({ setIsModal, loadMails }) {
     return <section className="mail-compose">
         <div className="new-mail">
             <p>New email</p>
-            <button onClick={onCloseNewMail}>X</button>
+            <button onClick={onCloseNewMail} title='Close'>X</button>
         </div>
         <div className="mail-content">
             <form onSubmit={onSendMail}>
@@ -55,7 +58,7 @@ export function MailCompose({ setIsModal, loadMails }) {
 
                 <div className="send-delete">
                     <button className="send">Send</button>
-                    <button type="button">Delete</button>
+                    <button type="button" title="Delete" className="fa-regular delete"></button>
                 </div>
             </form>
         </div>

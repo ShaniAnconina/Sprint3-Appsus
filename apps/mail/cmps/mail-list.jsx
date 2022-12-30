@@ -3,7 +3,7 @@ import { MailCompose } from './mail-compose.jsx'
 
 export function MailList({ mails, onRemoveMail, loadMails, onSelectingMail, isModal, setIsModal }) {
 
-
+    
     return <section className="mail-list">
         <div className="inbox-container">
             <ul>

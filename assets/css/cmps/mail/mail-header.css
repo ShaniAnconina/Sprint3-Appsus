@@ -1,15 +1,29 @@
 .gmail-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas: "left-side   search-container";
+    /* justify-content: space-between; */
     align-items: center;
     background-color: #f6f8fc;
-    padding: 10px 20px;
+    padding: 20px;
 }
 
-.gmail-header img {
+.search-container {
+    grid-area: search-container;
+    margin: 0 20px;
+}
+
+.gmail-header .left-side {
+    grid-area: left-side;
+    display: flex;
+    align-items: center;
+}
+
+.gmail-header .left-side img {
     width: 110px;
 }
 
+/* fontawesome */
 
 .gmail-header .fa-solid.hamburger::before {
     content: "\f0c9";

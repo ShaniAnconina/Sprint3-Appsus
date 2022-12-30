@@ -1,11 +1,11 @@
 import { MailFilter } from "./mail-filter.jsx";
 
-export function MailHeader({ onSetFilter }) {
+export function MailHeader({ setFilterBy }) {
     return <header className="gmail-header">
-        <div>
+        <div className="left-side">
             <span className="fa-solid hamburger"></span>
             <img src="../../assets/img/icons/Gmail_icon.png" />
         </div>
-        <MailFilter onSetFilter={onSetFilter} />
+        <div className="search-container"><MailFilter setFilterBy={setFilterBy} /></div>
     </header>
 }
