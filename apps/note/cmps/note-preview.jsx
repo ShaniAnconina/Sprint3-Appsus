@@ -1,6 +1,6 @@
 import { DynamicCmp } from "./dynamic-cmp.jsx"
 
-export function NotePreview({ noteId,onPinNote, note, onRemoveNote, onEditNote }) {
+export function NotePreview({ noteId,onPinNote, note, onRemoveNote, onEditNote, onDuplicatNote }) {
     return <article 
         style={{ backgroundColor: note.style.backgroundColor }}
         className={noteId === note.id ? "note-preview-container  edit-mode" : "note-preview-container"}
@@ -18,6 +18,11 @@ export function NotePreview({ noteId,onPinNote, note, onRemoveNote, onEditNote }
                 ev.stopPropagation()
                 onRemoveNote(note.id)
             }}>X</button>
+
+            <button onClick={(ev) => {
+                ev.stopPropagation()
+                onDuplicatNote(note.id)
+            }}>Duplicat</button>
         </div>
     </article>
 
