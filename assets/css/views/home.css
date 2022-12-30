@@ -1,0 +1,46 @@
+.home h1 {
+    font-family: Google-Sans-Thin;
+    font-size: 2.5rem;
+    line-height: 4rem;
+    margin-top: 100px;
+text-align: center;
+}
+
+.home nav {
+    display: inline-block;
+    text-align: center;
+    margin-top: 200px;
+    width: 100%;
+}
+
+.home nav a img {
+    width: 200px;
+}
+
+.home nav a {
+margin-inline: 50px;
+}
+
+.home nav a:hover {
+    background-color: var(--clr5);
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+
+}
+
+.red{
+    color: #e43935;
+}
+
+.yellow{
+    color: #fabf2d;
+}
+
+.green{
+    color: #4cae50;
+}
+
+.blue{
+    color: #1e87e4;
+}

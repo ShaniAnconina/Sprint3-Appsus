@@ -5,7 +5,7 @@ const { useState } = React
 const { useNavigate } = ReactRouterDOM
 
 
-export function MailPreview({ mail, onRemoveMail }) {
+export function MailPreview({ mail, onRemoveMail,onSelectingMail }) {
     const [isMailReaded, setMailReaded] = useState(mail.isRead)
     const navigate = useNavigate()
     const passedTime = mailService.getTimePassed(mail.sentAt)
@@ -18,13 +18,14 @@ export function MailPreview({ mail, onRemoveMail }) {
     }
 
     function onOpenMail() {
-        navigate(`/mail/${mail.id}`)
+        // navigate(`/mail/${mail.id}`)
+        onSelectingMail(mail)
     }
 
     function onDelete(ev) {
         ev.stopPropagation()
         onRemoveMail(mail.id)
-        showSuccessMsg('Email sent')
+        // showSuccessMsg('Email sent')
     }
 
     return <section className={mail.isRead ? 'mail-preview read' : 'mail-preview'} onClick={(ev) => {

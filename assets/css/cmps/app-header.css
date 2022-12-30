@@ -1,20 +1,25 @@
 .app-header {
-    background: lightcyan;
+    background-color: var(--clr0);
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px;
+    color: #5f6368;
 }
+
 
 nav a {
-    margin: .5em;
+    margin: 1em;
 }
 
-nav a:active {
-    color: purple;
+.app-header nav a.active,
+.app-header nav a:hover {
+    color: var(--clr1);
+    border-bottom: 2px solid #1e87e4;
+    padding-bottom: 10px;
 }
 
-nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
+.app-header .logo {
+    font-size: 1.75rem;
+    letter-spacing: 0.1rem;
+    font-family: Google-Sans-Light;
 }

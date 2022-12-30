@@ -1,16 +1,17 @@
 import { mailService } from "../services/mail.service.js"
 
 
-export function MailFolderList(){
+export function MailFolderList() {
     loadMails()
     const loggedinUser = mailService.getLoggedinUser()
+    // const inboxMails = 
 
-    function loadMails(){
+    function loadMails() {
         mailService.query()
-        .then((mails)=> {
-            const inboxMails = mails.filter(mail=> mail.to ===loggedinUser.email)
-            console.log('inboxMails:', inboxMails)
-        })
+            .then((mails) => {
+                const inboxMails = mails.filter(mail => mail.to === loggedinUser.email)
+                console.log('inboxMails:', inboxMails)
+            })
     }
 
     return <section className="mail-folder-list">

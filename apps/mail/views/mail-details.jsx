@@ -2,20 +2,21 @@ import { MailHeader } from "../cmps/mail-header.jsx"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
-const { useParams, useNavigate } = ReactRouterDOM
+// const { useParams, useNavigate } = ReactRouterDOM
 
 
-export function MailDetails() {
+export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
     const [mail, setMail] = useState(null)
-    const { mailId } = useParams()
-    const navigate = useNavigate()
+    // const { mailId } = useParams()
+    // const navigate = useNavigate()
 
     useEffect(() => {
         loadMail()
     }, [])
 
     function onGoBack() {
-        navigate(-1)
+        setSelcetedMail(null)
+        // navigate('/mail/')
     }
 
     function loadMail() {
@@ -23,22 +24,18 @@ export function MailDetails() {
             .then((mail) => setMail(mail))
             .catch((err) => {
                 console.log('Had issues in mail details', err)
-                navigate(-1)
+                setSelcetedMail(null)
             })
     }
 
-    function onRemoveMail() {
-        mailService.remove(mail.id)
-            .then(() => {
-                navigate(-1)
-            })
+    function onRemove() {
+                setSelcetedMail(null)
+                onRemoveMail(mail.id)
     }
 
 
     if (!mail) return <div>Loading...</div>
     return <section className="mail-details">
-        {/* <MailHeader /> */}
-
         <div className="mail-container">
             <h1>{mail.subject}</h1>
             <div className="info">
@@ -53,7 +50,7 @@ export function MailDetails() {
             </div>
             <p className="mail-content">{mail.body}</p>
             <button onClick={onGoBack}>Back</button>
-            <button onClick={onRemoveMail}>Delete</button>
+            <button onClick={onRemove}>Delete</button>
         </div>
     </section>
 }

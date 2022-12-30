@@ -4,11 +4,13 @@ import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailList } from '../cmps/mail-list.jsx'
 import { mailService } from '../services/mail.service.js'
+import { MailDetails } from './mail-details.jsx'
 
 export function MailIndex() {
     const [mails, setMails] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    const [selcetedMail, setSelcetedMail] = useState(null)
 
     useEffect(() => {
         loadMails()
@@ -21,6 +23,10 @@ export function MailIndex() {
                 setMails(mailsToUpdate)
                 setIsLoading(false)
             }))
+    }
+
+    function onSelectingMail(mail) {
+        setSelcetedMail(mail)
     }
 
     function onSetFilter(filterBy) {
@@ -36,9 +42,10 @@ export function MailIndex() {
     }
 
     return <section className="mail-index">
-        <MailFolderList />
         <MailHeader onSetFilter={onSetFilter} />
-        {mails && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} loadMails={loadMails} />}
+        {/* <MailFolderList /> */}
+        {(!selcetedMail && mails) && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} loadMails={loadMails} onSelectingMail={onSelectingMail} />}
+        {selcetedMail && <MailDetails mailId={selcetedMail.id} setSelcetedMail={setSelcetedMail} onRemoveMail={onRemoveMail} />}
         {isLoading && <div>Loading..</div>}
     </section>
 }

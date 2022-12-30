@@ -24,9 +24,10 @@ export function App() {
                 </Route>
                 <Route element={<MailIndex />} path="/mail" />
                 <Route element={<MailDetails />} path="/mail/:mailId" />
+
                 <Route element={<NoteIndex />} path="/note" />
                 <Route element={<NoteIndex />} path="/note/:noteId" />
             </Routes>
         </section>
-    </Router>
+    </Router >
 }

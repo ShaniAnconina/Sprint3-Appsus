@@ -35,6 +35,16 @@
 /* ----- Google Sans ----- */
 
 @font-face {
+    font-family: Google-Sans-Thin;
+    src: url(../../fonts/Google-Sans/ProductSans-Thin.ttf);
+}
+
+@font-face {
+    font-family: Google-Sans-Light;
+    src: url(../../fonts/Google-Sans/ProductSans-Light.ttf);
+}
+
+@font-face {
     font-family: Google-Sans-Regular;
     src: url(../../fonts/Google-Sans/ProductSans-Regular.ttf);
 }
