@@ -49,8 +49,8 @@ export function MailDetails({ mailId, setSelcetedMail,onRemoveMail }) {
                 </div>
             </div>
             <p className="mail-content">{mail.body}</p>
-            <button onClick={onGoBack}>Back</button>
-            <button onClick={onRemove}>Delete</button>
+            <button onClick={onGoBack} className="fa-solid back"></button>
+            <button onClick={onRemove} className="fa-regular delete"></button>
         </div>
     </section>
 }

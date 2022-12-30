@@ -36,3 +36,11 @@
 .mail-details .mail-content {
     grid-area: mail-content;
 }
+
+.mail-details .fa-regular.delete::before {
+    content: "\f2ed";
+}
+
+.mail-details .fa-solid.back::before {
+    content: "\f060";
+}

@@ -1,10 +1,11 @@
+const { useState } = React
+
 import { mailService } from "../services/mail.service.js"
 
+export function MailFolderList({setIsModal}) {
 
-export function MailFolderList() {
     loadMails()
     const loggedinUser = mailService.getLoggedinUser()
-    // const inboxMails = 
 
     function loadMails() {
         mailService.query()
@@ -15,6 +16,6 @@ export function MailFolderList() {
     }
 
     return <section className="mail-folder-list">
-        <h1>Hello from mail folder list</h1>
+            <button onClick={() => setIsModal(true)} className="fa-solid compose"><p className='text'>Compose</p></button>
     </section>
 }

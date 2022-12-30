@@ -11,6 +11,7 @@ export function MailIndex() {
     const [isLoading, setIsLoading] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [selcetedMail, setSelcetedMail] = useState(null)
+    const [isModal, setIsModal] = useState(false)
 
     useEffect(() => {
         loadMails()
@@ -42,11 +43,17 @@ export function MailIndex() {
     }
 
     return <section className="mail-index">
-        <MailHeader onSetFilter={onSetFilter} />
-        {/* <MailFolderList /> */}
-        {(!selcetedMail && mails) && <MailList mails={mails} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} loadMails={loadMails} onSelectingMail={onSelectingMail} />}
-        {selcetedMail && <MailDetails mailId={selcetedMail.id} setSelcetedMail={setSelcetedMail} onRemoveMail={onRemoveMail} />}
         {isLoading && <div>Loading..</div>}
+        <MailHeader onSetFilter={onSetFilter} />
+        <div className='page-container'>
+            <div className='sidebar'>
+                <MailFolderList setIsModal={setIsModal} />
+            </div>
+            <div className='main-container'>
+                {(!selcetedMail && mails) && <MailList mails={mails} isModal={isModal} setIsModal={setIsModal} onRemoveMail={onRemoveMail} onSetFilter={onSetFilter} loadMails={loadMails} onSelectingMail={onSelectingMail} />}
+                {selcetedMail && <MailDetails mailId={selcetedMail.id} setSelcetedMail={setSelcetedMail} onRemoveMail={onRemoveMail} />}
+            </div>
+        </div>
     </section>
 }
 

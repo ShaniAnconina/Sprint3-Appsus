@@ -1,6 +1,6 @@
-import { mailService } from "../services/mail.service.js"
+const { useState, useEffect } = React
 
-const { useState, useEffect, useRef } = React
+import { mailService } from "../services/mail.service.js"
 
 export function MailFilter({ onSetFilter }) {
 
@@ -26,11 +26,11 @@ export function MailFilter({ onSetFilter }) {
                 value={filterBy.txt}
                 onChange={handleChange} />
 
-                <select name="isRead" id="isRead" value={filterBy.isRead} onChange={handleChange}>
-                    <option value="all">All conversations</option>
-                    <option value="read">Read</option>
-                    <option value="unread">Unread</option>
-                </select>
+            <select name="isRead" id="isRead" value={filterBy.isRead} onChange={handleChange}>
+                <option value="all">All conversations</option>
+                <option value="read">Read</option>
+                <option value="unread">Unread</option>
+            </select>
         </form>
     </section>
 }

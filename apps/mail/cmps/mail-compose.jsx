@@ -1,7 +1,7 @@
-import { mailService } from "../services/mail.service.js"
-import { eventBusService,showSuccessMsg } from "../../../services/event-bus.service.js"
-
 const { useState } = React
+
+import { mailService } from "../services/mail.service.js"
+import { eventBusService, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function MailCompose({ setIsModal, loadMails }) {
     const [mail, setMail] = useState(mailService.getEmptyMail())
@@ -40,20 +40,17 @@ export function MailCompose({ setIsModal, loadMails }) {
                     name="to"
                     className="to"
                     placeholder="To"
-                    // value={mail.to}
                     onChange={handleChange} />
 
                 <input type="text"
                     name="subject"
                     className="subject"
                     placeholder="Subject"
-                    // value={mail.subject}
                     onChange={handleChange} />
 
                 <input type="text"
                     name="body"
                     className="content"
-                    // value={mail.body}
                     onChange={handleChange} />
 
                 <div className="send-delete">

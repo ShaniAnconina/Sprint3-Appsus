@@ -62,6 +62,28 @@
 /* ----- Font awsome ----- */
 
 @font-face {
-    font-family: fa;
-    src: url(/fonts/fontawesome/webfonts/fa-brands-400.ttf);
+    font-family: fa-solid;
+    src: url(../../fontawesome/fa-solid-900.ttf);
+}
+
+@font-face {
+    font-family: fa-regular;
+    src: url(../../fontawesome/fa-regular-400.ttf);
+}
+
+@font-face {
+    font-family: fa-brands;
+    src: url(../../fontawesome/fa-brands-400.ttf);
+}
+
+.fa-solid::before {
+    font-family: fa-solid;
+}
+
+.fa-regular::before {
+    font-family: fa-regular;
+}
+
+.fa-brands::before {
+    font-family: fa-brands;
 }

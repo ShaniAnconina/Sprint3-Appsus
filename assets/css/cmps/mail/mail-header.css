@@ -9,3 +9,8 @@
 .gmail-header img {
     width: 110px;
 }
+
+
+.gmail-header .fa-solid.hamburger::before {
+    content: "\f0c9";
+}

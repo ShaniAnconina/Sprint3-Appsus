@@ -1,13 +1,10 @@
+const { useState } = React
+
 import { mailService } from "../services/mail.service.js"
 import { eventBusService,showSuccessMsg } from "../../../services/event-bus.service.js"
 
-const { useState } = React
-const { useNavigate } = ReactRouterDOM
-
-
 export function MailPreview({ mail, onRemoveMail,onSelectingMail }) {
     const [isMailReaded, setMailReaded] = useState(mail.isRead)
-    const navigate = useNavigate()
     const passedTime = mailService.getTimePassed(mail.sentAt)
 
     function onReadMail(ev) {
@@ -18,7 +15,6 @@ export function MailPreview({ mail, onRemoveMail,onSelectingMail }) {
     }
 
     function onOpenMail() {
-        // navigate(`/mail/${mail.id}`)
         onSelectingMail(mail)
     }
 
@@ -37,12 +33,12 @@ export function MailPreview({ mail, onRemoveMail,onSelectingMail }) {
             <p className="subject">{mail.subject} </p>
             <p className="body">{mail.body.substring(0, 200) + '...'}</p>
         </div>
-        <div>
+        <div className="passed-time">
             {passedTime}
         </div>
         <div className="prev-btns">
-            <button onClick={onDelete}>Delete</button>
-            <button onClick={onReadMail}>{mail.isRead ? 'Mark as read' : 'Mark as unread'}</button>
+            <button onClick={onDelete} className="fa-regular delete"></button>
+            <button onClick={onReadMail} className={`fa-regular ${mail.isRead ? 'read' : 'unread'}`}></button>
         </div>
     </section>
 }
