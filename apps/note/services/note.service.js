@@ -35,11 +35,9 @@ function getEmptyNote() {
     }
 }
 
-
 function remove(id) {
     return storageService.remove(NOTE_KEY, id)
 }
-
 
 function query() {
     return storageService.query(NOTE_KEY)
@@ -63,7 +61,7 @@ function _createNote() {
                 type: 'note-img',
                 isPinned: false,
                 info: {
-                    url: 'http://some-img/me',
+                    url: 'https://flxt.tmsimg.com/assets/p185008_b_h10_ai.jpg',
                     title: 'Bobi and Me'
                 },
                 style: { backgroundColor: '#00d' }

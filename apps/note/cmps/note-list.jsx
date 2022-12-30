@@ -5,7 +5,7 @@ const { useState, useEffect } = React
 import { NotePreview } from "../cmps/note-preview.jsx"
 import { noteService } from "../services/note.service.js"
 
-export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes }) {
+export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes, onDuplicatNote }) {
     const [isPinnedList, setIsPinnedList] = useState(false)
     const { noteId } = useParams()
 
@@ -33,15 +33,18 @@ export function NoteList({ notes, onRemoveNote, onEditNote, loadNotes }) {
             })
     }
 
-
-    return <section className="note-list">
+    return <section>
         {isPinnedList && <section>
             <h3>Pinned notes</h3>
-            {pinedsNotes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
+            <div className="note-list">
+                {pinedsNotes.map(note => <NotePreview key={note.id} onDuplicatNote={onDuplicatNote} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
+            </div>
             <h3>Notes</h3>
-            {notPinedsNotes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
+            <div className="note-list">
+                {notPinedsNotes.map(note => <NotePreview key={note.id} onDuplicatNote={onDuplicatNote} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
+            </div>
         </section >}
 
-        {!isPinnedList && notes.map(note => <NotePreview key={note.id} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)}
+        {!isPinnedList && <section className="note-list">{notes.map(note => <NotePreview key={note.id} onDuplicatNote={onDuplicatNote} noteId={noteId} onPinNote={onPinNote} onEditNote={onEditNote} onRemoveNote={onRemoveNote} note={note} />)} </section>}
     </section>
 }
