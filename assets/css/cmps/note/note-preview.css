@@ -14,8 +14,6 @@
     opacity: 0;
 }
 
-
-
 .note-preview-container img {
     height: auto;
 }
@@ -26,4 +24,28 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
+}
+
+.note-preview-container .fa-solid.pin::before {
+    content: "\f08d";
+}
+
+.preview-btn .fa-solid.delete::before {
+    content: "\f2ed";
+}
+
+.preview-btn .fa-solid.duplicat::before {
+    content: "\f0c5";
+}
+
+.preview-btn .fa-solid.palette::before {
+    content: "\f53f";
+}
+
+.preview-btn .fa-solid.send::before {
+    content: "\f1d8";
+}
+
+.add-input-container .fa-solid.img::before {
+    content: "\f03e";
 }

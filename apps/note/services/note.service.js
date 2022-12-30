@@ -9,8 +9,11 @@ export const noteService = {
     remove,
     save,
     get,
-    getEmptyNoteInfo,
-    getEmptyNote
+    getEmptyNoteInfoForTxt,
+    getEmptyNoteInfoForImg,
+    getEmptyNoteTxt,
+    getEmptyNoteImg,
+
 }
 
 function save(note) {
@@ -25,13 +28,23 @@ function get(id) {
     return storageService.get(NOTE_KEY, id)
 }
 
-function getEmptyNoteInfo() {
+function getEmptyNoteInfoForTxt() {
     return { txt: '' }
 }
 
-function getEmptyNote() {
+function getEmptyNoteInfoForImg() {
+    return { title: '', url: '' }
+}
+
+function getEmptyNoteTxt() {
     return {
         type: "note-txt", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
+    }
+}
+
+function getEmptyNoteImg() {
+    return {
+        type: "note-img", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
     }
 }
 

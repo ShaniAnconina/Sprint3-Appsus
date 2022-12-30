@@ -2,37 +2,38 @@ const { useState } = React
 
 import { noteService } from "../services/note.service.js"
 
+import { NoteTypeImg } from "./note-type-img.jsx"
+import { NoteTypeTxt } from "./note-type-txt.jsx"
+
+
 
 export function NoteAdd({ loadNotes }) {
-    const [noteInfoToEdit, setNoteInfoToEdit] = useState(noteService.getEmptyNoteInfo())
+    const [typeNoteToEdit, setTypeNoteToEdit] = useState('note-txt')
 
-
-    function handleChange({ target }) {
-        let { value, name: field } = target
-        setNoteInfoToEdit((prevNote) => ({ ...prevNote, [field]: value }))
+    function DynamicCmp({typeNoteToEdit}) {
+        switch (typeNoteToEdit) {
+            case 'note-txt':
+                return <NoteTypeTxt loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
+    
+            case 'note-img':
+                return <NoteTypeImg loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
+        }
     }
+    
 
-    function onSaveNote(ev) {
-        ev.preventDefault()
-        const note = noteService.getEmptyNote()
-        note.info = noteInfoToEdit
-        noteService.save(note)
-            .then(() => {
-                setNoteInfoToEdit(noteService.getEmptyNoteInfo())
-                loadNotes()
-            })
-    }
 
     return <section className="note-add">
-            <form onSubmit={onSaveNote}>
-                <input type="text"
-                    name="txt"
-                    id="title"
-                    value={noteInfoToEdit.txt}
-                    onChange={handleChange}
-                    onClick={(ev) => {ev.stopPropagation()}} 
-                />
-                <button onClick={(ev) => {ev.stopPropagation()}}  >Save</button>
-            </form>
+
+        <DynamicCmp typeNoteToEdit={typeNoteToEdit} />
+
+        <button onClick={() => setTypeNoteToEdit('note-img')} className="fa-solid img" ></button>
+        {/* <button className="fa-solid img" ></button>
+            <button className="fa-solid img" ></button> */}
+
     </section >
+
 }
+
+
+
+

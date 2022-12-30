@@ -66,6 +66,8 @@ export function NoteIndex() {
             })
     }
 
+
+
     let isEditNote = (noteToEdit) ? 'edit-mode' : ''
 
     return <section onClick={(ev) => {
@@ -77,12 +79,13 @@ export function NoteIndex() {
         {/* <video className="note-vid" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/dash/SintelVideo.mp4" controls="" autoplay=""></video>
         <video className="note-vid" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4" controls="" autoplay=""></video> */}
 
-        {!isEditMode && <div onClick={(ev) => {
-            ev.stopPropagation()
-            setIsEditMode(true)
-        }} className="note-add-placeholder">Enter your note...</div>}
 
-        {isEditMode && <NoteAdd loadNotes={loadNotes} />}
+        <div className="add-input-container">
+
+            <NoteAdd loadNotes={loadNotes} />
+
+
+        </div>
 
         <NoteList notes={notes} loadNotes={loadNotes} onEditNote={onEditNote} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote} />
         {noteToEdit && <NoteEdit onRemoveNote={onRemoveNote} setNoteToEdit={setNoteToEdit} noteToEdit={noteToEdit} />}
