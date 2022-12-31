@@ -49,9 +49,6 @@
 /* -------------------Media query------------------- */
 
 @media (min-width: 935px) {
-    .main-layout>*:not(.full) {
-        padding-inline: 20px;
-    }
 
     .mail-filter form input.txt {
         width: 500px;
