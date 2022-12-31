@@ -3,12 +3,12 @@ import { NoteTodos } from "./note-todos.jsx"
 import { NoteTxt } from "./note-txt.jsx"
 import { NoteVideo } from "./note-video.jsx"
 
-export function DynamicCmp({type, info}){
+export function DynamicCmp({type, info, note}){
     switch (type) {
         case 'note-txt':
             return <NoteTxt info={info} />
         case 'note-todos':
-            return <NoteTodos info={info} />
+            return <NoteTodos note={note} info={info}  />
         case 'note-img':
             return <NoteImg info={info} />
         case 'note-video':

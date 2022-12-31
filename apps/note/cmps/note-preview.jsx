@@ -8,13 +8,12 @@ export function NotePreview({ noteId, onPinNote, note, onRemoveNote, onEditNote,
         onClick={() => onEditNote(note.id)}>
 
         <button onClick={(ev) => { onPinNote(ev, note.id) }} className="fa-solid pin"></button>
-
+        
         <div className="note-preview">
-            {/* <DynamicCmp type={note.type} info={note.info} onChangeInfo={info => onChangeInfo(note.id, info)} /> */}
-            <DynamicCmp type={note.type} info={note.info} />
+            <DynamicCmp type={note.type} info={note.info} note={note} />
         </div>
 
-        <EditBtn note={note} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote}  />
+        <EditBtn note={note} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote} />
 
     </article>
 

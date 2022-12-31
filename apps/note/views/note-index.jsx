@@ -5,43 +5,24 @@ const { useParams, useNavigate } = ReactRouterDOM
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
 
-
 import { NoteEdit } from "../cmps/note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteAdd } from "../cmps/note-add.jsx"
-
-
-
-
-//DONE: msg off secses
-//DONE: create a several edit screens
-//DDONE: about text
-//DONE: imploment the video adding and edit
-//DONE: add a bable to regular note
-
-//TODO: TODOS- edit, show as done, add time to done todos
-//TODO: serch and filter
-//TODO: improve the demo data
-//TODO: CSS
-
-//TODO: improve the note to show wene they create
-//TODO: color pallete
-//TODO: send a email and get emails
-
-
-
-
-
-
-
+import { NoteHeader } from "../cmps/note-header.jsx"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState([])
     const [noteToEdit, setNoteToEdit] = useState(null)
     const [isEditMode, setIsEditMode] = useState(false)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+
 
     const { noteId } = useParams()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        loadNotes()
+    }, [filterBy])
 
 
     useEffect(() => {
@@ -57,7 +38,7 @@ export function NoteIndex() {
     }, [noteToEdit])
 
     function loadNotes() {
-        noteService.query().then((setNotes))
+        noteService.query(filterBy).then((setNotes))
     }
 
     function onRemoveNote(noteId) {
@@ -73,9 +54,10 @@ export function NoteIndex() {
     }
 
     function onEditNote(id) {
-        navigate(`/note/${id}`)
-        const note = noteService.get(id)
+        noteService.get(id)
             .then((note) => {
+                if (note.type === 'note-todos') return
+                navigate(`/note/${id}`)
                 setNoteToEdit(note)
             })
     }
@@ -88,7 +70,7 @@ export function NoteIndex() {
                 newNote.style.backgroundColor = '#fff'
                 noteService.save(newNote)
                     .then(() => {
-                        showSuccessMsg('Note duplicated')
+                        showSuccessMsg('Note duplicated succsecsfuly')
                         loadNotes()
                     })
                     .catch(() => { showErrorMsg(`Note cano't duplicated, tray again`) })
@@ -101,6 +83,8 @@ export function NoteIndex() {
         ev.stopPropagation()
         setIsEditMode(false)
     }} className={`note-index ${isEditNote}`}>
+
+        <NoteHeader setFilterBy={setFilterBy} />
 
         <div className="add-input-container">
             <NoteAdd loadNotes={loadNotes} />
