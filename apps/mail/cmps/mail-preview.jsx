@@ -2,7 +2,7 @@ const { useState } = React
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailPreview({ mail, onRemoveMail, onSelectingMail }) {
+export function MailPreview({ setCountUnreadedMails, mail, onRemoveMail, onSelectingMail }) {
     const [isMailReaded, setMailReaded] = useState(mail.isRead)
     const passedTime = mailService.getTimePassed(mail.sentAt)
 
@@ -11,6 +11,7 @@ export function MailPreview({ mail, onRemoveMail, onSelectingMail }) {
         mail.isRead = !mail.isRead
         mailService.save(mail)
         setMailReaded(mail.isRead)
+        setCountUnreadedMails()
     }
 
     function onOpenMail() {
@@ -18,11 +19,13 @@ export function MailPreview({ mail, onRemoveMail, onSelectingMail }) {
         mailService.save(mail)
         setMailReaded(mail.isRead)
         onSelectingMail(mail)
+        setCountUnreadedMails()
     }
 
     function onDelete(ev) {
         ev.stopPropagation()
         onRemoveMail(mail, mail.id)
+        setCountUnreadedMails()
     }
 
     return <section className={mail.isRead ? 'mail-preview read' : 'mail-preview'} onClick={onOpenMail}>

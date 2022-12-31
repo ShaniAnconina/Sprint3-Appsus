@@ -25,11 +25,17 @@
     height: 40px;
 }
 
+.mail-filter form select:focus-visible,
 .mail-filter form input.txt:focus-visible {
     outline: none;
 }
 
-.mail-filter form .isRead {
+.mail-filter form select {
+    border: none;
+    background-color: transparent;
+}
+
+.mail-filter form select option {
     border: none;
     background-color: transparent;
 }

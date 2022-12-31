@@ -1,7 +1,7 @@
 const { useEffect, useRef, useState } = React
 
-export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, setSelcetedMail }) {
-    // const elInputRef = useRef(null)
+export function MailFolderList({ countUnreadedMails,setIsModal, setFilterBy, setSelcetedMail }) {
+    // const elInputRef = useRef()
 
     // useEffect(() => {
     //     elInputRef.current.focus()
@@ -13,8 +13,6 @@ export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, se
             return { ...prevFilter, folder }
         })
     }
-
-
 
     return <section className="mail-folder-list">
         <button onClick={() => setIsModal(true)} title='Compose new email' className="fa-solid compose"><p className='text'>Compose</p></button>

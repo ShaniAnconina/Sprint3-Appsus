@@ -19,10 +19,7 @@ export function App() {
             <AppHeader />
             <Routes>
                 <Route element={<Home />} path="/" />
-                <Route element={<About />} path="/about" >
-                    <Route element={<Services />} path="/about" />
-                    <Route element={<Team />} path="/about/team" />
-                </Route>
+                <Route element={<About />} path="/about" />
                 <Route element={<MailIndex />} path="/mail" />
                 <Route element={<MailDetails />} path="/mail/:mailId" />
 
