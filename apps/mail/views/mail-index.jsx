@@ -14,7 +14,6 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [selcetedMail, setSelcetedMail] = useState(null)
     const [isModal, setIsModal] = useState(false)
-    const [sortBy, setSortBy] = useState([])
     const [countUnreadedMails, setCountUnreadedMails] = useState(null)
 
     useEffect(() => {
@@ -82,7 +81,7 @@ export function MailIndex() {
         if (value === 'date') {
             mails.sort((a, b) => b.sentAt - a.sentAt)
         }
-        setSortBy(mails)
+        setMails(mails.map(mail => mail))
     }
 
 
