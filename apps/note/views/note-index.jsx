@@ -2,12 +2,30 @@ const { useState, useEffect } = React
 
 const { useParams, useNavigate } = ReactRouterDOM
 
-import { utilService } from "../../../services/util.service.js"
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
+
 
 import { NoteEdit } from "../cmps/note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteAdd } from "../cmps/note-add.jsx"
+
+
+//TODO: improve the todo show and add the option to mark as done and wene
+
+
+//DONE: msg off secses
+//DONE: create a several edit screens
+//DDONE: about text
+//DONE: imploment the video adding and edit
+
+
+//TODO: improve the note to show wene they create
+//TODO: sort and filter
+//TODO: color pallete
+//TODO: send a email and get emails
+//TODO: CSS
+
 
 
 export function NoteIndex() {
@@ -38,13 +56,13 @@ export function NoteIndex() {
     function onRemoveNote(noteId) {
         noteService.remove(noteId)
             .then(() => {
+                showSuccessMsg('Note remove succsecsfuly')
                 navigate(`/note/`)
                 setNoteToEdit(null)
                 const updatedNote = notes.filter(note => note.id !== noteId)
                 setNotes(updatedNote)
             })
-
-            .catch((err) => { console.log(err) })
+            .catch(() => { showErrorMsg(`Note cano't remove, tray again`) })
     }
 
     function onEditNote(id) {
@@ -60,13 +78,15 @@ export function NoteIndex() {
             .then((note) => {
                 const newNote = note
                 newNote.id = null
-                newNote.style.backgroundColor = utilService.getRandomColor()
+                newNote.style.backgroundColor = '#fff'
                 noteService.save(newNote)
-                    .then(() => loadNotes())
+                    .then(() => {
+                        showSuccessMsg('Note duplicated')
+                        loadNotes()
+                    })
+                    .catch(() => { showErrorMsg(`Note cano't duplicated, tray again`) })
             })
     }
-
-
 
     let isEditNote = (noteToEdit) ? 'edit-mode' : ''
 
@@ -75,20 +95,12 @@ export function NoteIndex() {
         setIsEditMode(false)
     }} className={`note-index ${isEditNote}`}>
 
-//TODO: imploment thevideo suction with url like those
-        {/* <video className="note-vid" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/dash/SintelVideo.mp4" controls="" autoplay=""></video>
-        <video className="note-vid" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4" controls="" autoplay=""></video> */}
-
-
         <div className="add-input-container">
-
             <NoteAdd loadNotes={loadNotes} />
-
-
         </div>
 
         <NoteList notes={notes} loadNotes={loadNotes} onEditNote={onEditNote} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote} />
-        {noteToEdit && <NoteEdit onRemoveNote={onRemoveNote} setNoteToEdit={setNoteToEdit} noteToEdit={noteToEdit} />}
+        {noteToEdit && <NoteEdit loadNotes={loadNotes} onDuplicatNote={onDuplicatNote} onRemoveNote={onRemoveNote} setNoteToEdit={setNoteToEdit} noteToEdit={noteToEdit} />}
 
     </section>
 }

@@ -18,6 +18,11 @@
     height: auto;
 }
 
+.note-vid {
+    height: auto;
+    width: 100%;
+}
+
 .note-preview {
     display: flex;
     flex-direction: column;
@@ -46,6 +51,3 @@
     content: "\f1d8";
 }
 
-.add-input-container .fa-solid.img::before {
-    content: "\f03e";
-}

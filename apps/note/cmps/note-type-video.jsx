@@ -4,12 +4,11 @@ const { useParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 
-export function NoteTypeImg({ setGetNoteInfoToEdit, setNoteToEdit, loadNotes }) {
+export function NoteTypeVideo({ setGetNoteInfoToEdit,  loadNotes }) {
 
     const [noteInfoToEdit, setNoteInfoToEdit] = useState(noteService.getEmptyNoteInfoForImg())
     const [note, setNote] = useState(noteService.getEmptyNoteImg())
     const { noteId } = useParams()
-
 
     useEffect(() => {
         if (!noteId) return
@@ -35,6 +34,7 @@ export function NoteTypeImg({ setGetNoteInfoToEdit, setNoteToEdit, loadNotes }) 
 
     function saveNote(ev) {
         ev.preventDefault()
+        note.type = 'note-video'
         note.info = noteInfoToEdit
         noteService.save(note)
             .then(() => {
@@ -52,17 +52,17 @@ export function NoteTypeImg({ setGetNoteInfoToEdit, setNoteToEdit, loadNotes }) 
                 value={noteInfoToEdit.title}
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
-                placeholder="Enter the img title..."  
-                          />
+                placeholder="Enter the video title..."
+            />
+
             <input type="text"
                 name="url"
                 id="url"
                 value={noteInfoToEdit.url}
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
+                placeholder="Enter the video url..."
                 className="img-url-input"
-                placeholder="Enter the img url..."
-
             />
             <button hidden={true}></button>
         </form>

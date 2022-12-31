@@ -33,3 +33,6 @@
 @import './cmps/note/note-todos.css'; /* note */
 @import './cmps/note/note-edit.css'; /* note */
 @import './cmps/note/note-add.css'; /* note */
+@import './cmps/note/note-add-img.css'; /* note */
+@import './cmps/note/note-add-txt.css'; /* note */
+@import './cmps/note/note-add-todos.css'; /* note */

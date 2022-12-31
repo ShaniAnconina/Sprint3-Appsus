@@ -1,4 +1,5 @@
 import { DynamicCmp } from "./dynamic-cmp.jsx"
+import { EditBtn } from "./edit-btn.jsx"
 
 export function NotePreview({ noteId, onPinNote, note, onRemoveNote, onEditNote, onDuplicatNote }) {
     return <article
@@ -13,27 +14,8 @@ export function NotePreview({ noteId, onPinNote, note, onRemoveNote, onEditNote,
             <DynamicCmp type={note.type} info={note.info} />
         </div>
 
-        <div className='preview-btn'>
-            <button className="fa-solid delete" onClick={(ev) => {
-                ev.stopPropagation()
-                onRemoveNote(note.id)
-            }}></button>
+        <EditBtn note={note} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote}  />
 
-            <button className="fa-solid duplicat" onClick={(ev) => {
-                ev.stopPropagation()
-                onDuplicatNote(note.id)
-            }}></button>
-
-            <button className="fa-solid palette" onClick={(ev) => {
-                ev.stopPropagation()
-                console.log(note.id);
-            }}></button>
-
-            <button className="fa-solid send" onClick={(ev) => {
-                ev.stopPropagation()
-                console.log(note.id);
-            }}></button>
-        </div>
     </article>
 
 
