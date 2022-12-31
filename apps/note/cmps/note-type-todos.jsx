@@ -4,7 +4,7 @@ const { useParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 
-export function NoteTypeTodos({setGetNoteInfoToEdit, loadNotes }) {
+export function NoteTypeTodos({ setGetNoteInfoToEdit, loadNotes }) {
     const { noteId } = useParams()
     const [todos, setTodos] = useState([])
     const [todosToEdit, setTodosToEdit] = useState({ txt: '', doneAt: null })
@@ -40,13 +40,13 @@ export function NoteTypeTodos({setGetNoteInfoToEdit, loadNotes }) {
             setTodosToEdit((prevNote) => ({ ...prevNote, [field]: value }))
             return
         }
-        
+
         setNoteInfoToEdit((prevNote) => ({ ...prevNote, [field]: value }))
     }
 
     function saveNote(ev) {
         ev.preventDefault()
-        if(todosToEdit.txt) onAddTodo()
+        if (todosToEdit.txt) onAddTodo()
         note.info = noteInfoToEdit
         note.info.todos = todos
         noteService.save(note)
@@ -67,8 +67,10 @@ export function NoteTypeTodos({setGetNoteInfoToEdit, loadNotes }) {
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
                 placeholder="Enter the TODOS title..."
+                className="add-todo-title"
             />
 
+            <button type="button" onClick={onAddTodo} className="fa-solid add" ></button>
             <input type="text"
                 name="txt"
                 id="txt"
@@ -76,9 +78,9 @@ export function NoteTypeTodos({setGetNoteInfoToEdit, loadNotes }) {
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
                 placeholder="Enter the TODOS..."
+                className="add-todo"
             />
 
-            <button type="button" onClick={onAddTodo} className="fa-solid add" ></button>
 
             <button hidden={true}></button>
         </form>

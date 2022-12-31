@@ -21,7 +21,7 @@ export function NoteAdd({ loadNotes }) {
             type = 'img'
             break
         case 'note-video':
-            type = 'video'
+            type = 'img'
             break
         case 'note-todos':
             type = 'todos'
@@ -51,8 +51,9 @@ export function NoteAdd({ loadNotes }) {
 
         <DynamicCmp typeNoteToEdit={typeNoteToEdit} />
 
-        <button onClick={() => setTypeNoteToEdit('note-img')} className="fa-solid img" ></button>
-        <button onClick={() => setTypeNoteToEdit('note-video')} className="fa-solid video" ></button>
+        <button onClick={() => setTypeNoteToEdit('note-txt')} className="fa-solid txt" ></button>
+        <button onClick={() => setTypeNoteToEdit('note-img')} className="fa-regular img" ></button>
+        <button onClick={() => setTypeNoteToEdit('note-video')} className="fa-regular video" ></button>
         <button onClick={() => setTypeNoteToEdit('note-todos')} className="fa-solid todo" ></button>
 
     </section >

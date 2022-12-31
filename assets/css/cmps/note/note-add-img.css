@@ -1,5 +1,6 @@
-.note-add.img{
-    height: 90px;
+.note-add.img {
+    margin-inline: auto;
+    height: 100px;
     width: 600px;
     border: 1px solid rgb(224, 224, 224);
     padding-inline-start: 10px;
@@ -9,10 +10,12 @@
     margin-block: 25px;
 }
 
-input.img-url-input{
-    border-top: 1px solid black;
+.note-add.img form {
+    width: 450px;
+    padding: 0;
+    margin: 0;
 }
 
-
-    
-   
+input.img-url-input {
+    border-top: 1px solid black;
+}
