@@ -1,0 +1,56 @@
+.note-header{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas: "left-side   search-container";
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.search-container {
+    grid-area: search-container;
+    margin: 0 20px;
+}
+
+.gmail-header .left-side {
+    grid-area: left-side;
+    display: flex;
+    align-items: center;
+}
+
+.note-header .left-side img {
+    width: 110px;
+}
+
+/* fontawesome */
+
+.gmail-header .fa-solid.hamburger::before {
+    content: "\f0c9";
+}
+
+@media (min-width:605px) {
+    .note-list {
+        column-count: 2;
+
+    }
+}
+@media (min-width:850px) {
+    .note-list {
+        column-count: 3;
+
+    }
+}
+
+@media (min-width: 1090px) {
+    .note-list {
+        column-count: 4;
+
+    }
+}
+
+@media (min-width: 1360px) {
+    .note-list {
+        column-count: 5;
+
+    }
+}
