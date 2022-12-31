@@ -15,7 +15,6 @@ export const mailService = {
     getTimePassed,
     getLoggedinUser,
     getUnreadMailsCount,
-    // draftAutoSave
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -70,12 +69,6 @@ function save(mail) {
         return storageService.post(MAIL_KEY, mail)
     }
 }
-
-// function draftAutoSave(mail) {
-//     mail.isDraft = true
-//     save(mail)
-//         .then(console.log)
-// }
 
 function getUnreadMailsCount() {
     return storageService.query(MAIL_KEY)

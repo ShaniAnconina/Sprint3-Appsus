@@ -1,11 +1,4 @@
-// const { useEffect, useRef, useState } = React
-
 export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, setSelcetedMail }) {
-    // const elInputRef = useRef()
-
-    // useEffect(() => {
-    //     elInputRef.current.focus()
-    // }, [])
 
     function onFilterFolders(folder) {
         setSelcetedMail(null)
@@ -22,7 +15,6 @@ export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, se
         </div>
         <button onClick={() => setIsModal(true)} title='Compose new email' className="fa-solid compose"><p className='text'>Compose</p></button>
         <div className="folders">
-            {/* <button ref={elInputRef} className="inbox" onClick={() => onFilterFolders('inbox')} ><span className="fa-solid inbox-icon"></span> Inbox</button> */}
             <button className="inbox" onClick={() => onFilterFolders('inbox')} ><span className="fa-solid inbox-icon"></span>Inbox<span className="count-unread-mails">{countUnreadedMails}</span></button>
             <button className="sent" onClick={() => onFilterFolders('sent')} ><span className="fa-regular sent-icon"></span>Sent</button>
             <button className="trash" onClick={() => onFilterFolders('trash')} ><span className="fa-regular trash-icon"></span>Trash</button>

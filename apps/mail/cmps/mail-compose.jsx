@@ -1,32 +1,10 @@
-const { useState, useEffect, useRef } = React
+const { useState } = React
 
 import { mailService } from "../services/mail.service.js"
 import { eventBusService, showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
 
 export function MailCompose({ setIsModal, loadMails }) {
     const [mail, setMail] = useState(mailService.getEmptyMail())
-
-    // let intervalDraftRef = useRef(null)
-
-    // useEffect(() => {
-    //     console.log('mail:', mail)
-    //     if (mail.subject || mail.body) return
-    //     intervalDraftRef.current = setInterval(() => {
-    //         console.log('save')
-    //         draftAutoSave()
-    //         // mailService.draftAutoSave(mail)
-    //     }, 5000)
-
-    //     // return () => {
-    //     //     clearInterval(intervalDraftRef.current)
-    //     // }
-    // }, [mail])
-
-    // function draftAutoSave() {
-    //     mail.isDraft = true
-    //     mailService.save(mail)
-    //         .then(console.log)
-    // }
 
     function onCloseNewMail() {
         setIsModal(false)
