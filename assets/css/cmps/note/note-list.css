@@ -6,9 +6,8 @@
     column-gap: 20px;
     column-fill: balance;
     margin-bottom: 20px;
-    flex-direction: column;
-    display: flex;
-    align-items: center
+
+    margin-inline: auto;
 }
 
 @media (min-width:605px) {
@@ -17,6 +16,7 @@
 
     }
 }
+
 @media (min-width:850px) {
     .note-list {
         column-count: 3;
