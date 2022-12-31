@@ -1,5 +1,6 @@
 .note-add.todos{
-    height: 120px;
+    margin-inline: auto;
+    height: 100px;
     width: 600px;
     border: 1px solid rgb(224, 224, 224);
     padding-inline-start: 10px;
@@ -10,15 +11,16 @@
 }
 
 .note-add.todos .fa-solid.add::before {
-    content: "\f055";
+    content: "\2b";
 }
 
+.note-add.todos .add-todo-title {
+    border-bottom: 1px solid black;
+    display: block;
+}
 
-/* 
-input.img-url-input{
-    border-top: 1px solid black;
-} */
-
-
+.note-add.todos .add-todo {
+    width: 400px;
+}
     
    

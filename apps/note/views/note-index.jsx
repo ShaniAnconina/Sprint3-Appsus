@@ -11,20 +11,27 @@ import { NoteList } from "../cmps/note-list.jsx"
 import { NoteAdd } from "../cmps/note-add.jsx"
 
 
-//TODO: improve the todo show and add the option to mark as done and wene
 
 
 //DONE: msg off secses
 //DONE: create a several edit screens
 //DDONE: about text
 //DONE: imploment the video adding and edit
+//DONE: add a bable to regular note
 
+//TODO: TODOS- edit, show as done, add time to done todos
+//TODO: serch and filter
+//TODO: improve the demo data
+//TODO: CSS
 
 //TODO: improve the note to show wene they create
-//TODO: sort and filter
 //TODO: color pallete
 //TODO: send a email and get emails
-//TODO: CSS
+
+
+
+
+
 
 
 
