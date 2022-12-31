@@ -14,7 +14,8 @@ export const mailService = {
     getEmptyMail,
     getTimePassed,
     getLoggedinUser,
-    getUnreadMailsCount
+    getUnreadMailsCount,
+    // draftAutoSave
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -54,14 +55,6 @@ function query(filterBy = getDefaultFilter()) {
         })
 }
 
-function getUnreadMailsCount() {
-    return storageService.query(MAIL_KEY)
-        .then((mails) => {
-            const unreadMails = mails.filter(mail => !mail.isRead && mail.to === loggedinUser.email && !mail.isTrashed)
-            return unreadMails.length
-        })
-}
-
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
 }
@@ -78,15 +71,29 @@ function save(mail) {
     }
 }
 
+// function draftAutoSave(mail) {
+//     mail.isDraft = true
+//     save(mail)
+//         .then(console.log)
+// }
+
+function getUnreadMailsCount() {
+    return storageService.query(MAIL_KEY)
+        .then((mails) => {
+            const unreadMails = mails.filter(mail => !mail.isRead && mail.to === loggedinUser.email && !mail.isTrashed)
+            return unreadMails.length
+        })
+}
+
 function getLoggedinUser() {
     return loggedinUser
 }
 
 function getDefaultFilter() {
-    return { txt: '', isRead: '', isDraft: '', folder: 'inbox' }
+    return { txt: '', isRead: '', folder: 'inbox' }
 }
 
-function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up sometimes', from = 'User', to = 'user@appsus.com') {
+function getEmptyMail(subject, body, from = 'User', to = 'user@appsus.com') {
     return {
         subject,
         body,
@@ -95,6 +102,7 @@ function getEmptyMail(subject = 'Miss you!', body = 'Would love to catch up some
         sentAt: Date.now(),
         from,
         to,
+        isDraft: false
     }
 }
 

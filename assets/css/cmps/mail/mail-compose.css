@@ -1,8 +1,8 @@
 .mail-compose {
     position: fixed;
     bottom: 0;
-    height: 450px;
-    width: 450px;
+    height: 400px;
+    width: 400px;
     background-color: var(--clr0);
     box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.225), 0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0 / 20%);
     border-radius: 8px 8px 0 0;
@@ -75,4 +75,13 @@
 
 .mail-compose .fa-regular.delete::before {
     content: "\f2ed";
+}
+
+/* -------------------Media query------------------- */
+
+@media (min-width: 635px) {
+    .mail-compose {
+        height: 450px;
+        width: 450px;
+    }
 }

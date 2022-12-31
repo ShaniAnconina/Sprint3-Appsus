@@ -5,7 +5,7 @@ import { mailService } from "../services/mail.service.js"
 export function MailPreview({ setCountUnreadedMails, mail, onRemoveMail, onSelectingMail }) {
     const [isMailReaded, setMailReaded] = useState(mail.isRead)
     const passedTime = mailService.getTimePassed(mail.sentAt)
-
+    let mailBody = (mail.body.length > 145) ? (mail.body.substring(0, 145) + '...') :mail.body
     function onReadMail(ev) {
         if (ev) ev.stopPropagation()
         mail.isRead = !mail.isRead
@@ -32,7 +32,7 @@ export function MailPreview({ setCountUnreadedMails, mail, onRemoveMail, onSelec
         <div className="msg-prev">
             <p className="from">{mail.from}</p>
             <p className="subject">{mail.subject} </p>
-            <p className="body">{mail.body.substring(0, 200) + '...'}</p>
+            <p className="body">{mailBody}</p>
         </div>
         <div className="passed-time">
             {passedTime}

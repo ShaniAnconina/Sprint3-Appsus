@@ -3,6 +3,7 @@
 @import './setup/typography.css';
 
 /* Basics */
+@import './basics/layouts.css';
 @import './basics/base.css';
 @import './basics/helpers.css';
 

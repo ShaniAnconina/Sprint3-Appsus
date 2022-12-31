@@ -1,19 +1,25 @@
-.mail-index{
-    height: 100vh;
+.mail-index {
+    background-color: #f6f8fc;
 }
 
-.page-container{
+.mail-index-container {
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 6fr;
-    grid-template-areas: 
-    "sidebar main-container"
-    ;
+    grid-template-areas:
+        "sidebar    header"
+        "sidebar    main-container";
 }
 
-.sidebar{
+.sidebar {
     grid-area: sidebar;
 }
 
-.main-container{
+.main-container {
     grid-area: main-container;
+}
+
+.header {
+    grid-area: header;
+
 }

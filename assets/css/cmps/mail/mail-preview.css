@@ -8,21 +8,32 @@
     font-size: 0.9rem;
     background-color: var(--clr0);
     cursor: pointer;
+    /* font-family: Google-Sans-Bold, Roboto-Bold, Arial; */
+}
+
+.mail-preview .msg-prev {
+    padding-right: 20px;
+}
+
+.mail-preview.body {
+    color: var(--clr3);
+}
+
+.mail-preview.read .subject,
+.mail-preview.read .from {
+    color: var(--clr2);
+    font-family: Google-Sans-Regular, Roboto-Regular, Arial;
+}
+
+.mail-preview .subject,
+.mail-preview .from {
+    color: var(--clr2);
     font-family: Google-Sans-Bold, Roboto-Bold, Arial;
 }
 
 .mail-preview.read {
     background-color: var(--clr7);
     font-family: Google-Sans-Regular, Roboto-Regular, Arial;
-}
-
-.mail-preview .body {
-    color: var(--clr3);
-}
-
-.mail-preview .subject,
-.mail-preview .from {
-    color: var(--clr2);
 }
 
 .mail-preview .prev-btns {
@@ -34,13 +45,14 @@
     display: inline-block;
 }
 
-.passed-time {
+.mail-preview .passed-time {
     font-family: Google-Sans-Regular, Roboto-Regular, Arial;
     font-size: 0.8rem;
+    text-align: center;
 }
 
 .mail-preview:hover .passed-time {
-   display: none;
+    display: none;
 }
 
 /* fontawesome */

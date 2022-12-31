@@ -86,8 +86,10 @@ export function MailIndex() {
 
 
     return <section className="mail-index">
-        <MailHeader onSort={onSort} setFilterBy={setFilterBy} />
-        <div className='page-container'>
+        <div className="mail-index-container">
+            <div className='header'>
+                <MailHeader onSort={onSort} setFilterBy={setFilterBy} />
+            </div>
             <div className='sidebar'>
                 <MailFolderList countUnreadedMails={countUnreadedMails} setSelcetedMail={setSelcetedMail} isModal={isModal} setIsModal={setIsModal} setFilterBy={setFilterBy} />
             </div>

@@ -1,0 +1,29 @@
+/* -------------------layouts------------------- */
+/* 
+.main-layout>*:not(.full) {
+    max-width: 95vw;
+} */
+
+/* -------------------Media query------------------- */
+
+/* mobile only */
+/* @media (max-width: 680px) {
+    .main-layout>*:not(.full) {
+        padding-inline: 30px;
+    }
+} */
+
+/* small */
+/* @media (min-width: 680px) {
+    .main-layout>*:not(.full) {
+        max-width: 90vw;
+        margin-inline: auto;
+    }
+} */
+
+/* medium */
+/* @media (min-width: 920px) {
+    .main-layout>*:not(.full) {
+        padding-inline: 20px;
+    }
+} */
