@@ -13,7 +13,6 @@ export function NoteTypeImg({ loadNotes }) {
     function saveNote(ev) {
         ev.preventDefault()
         const note = noteService.getEmptyNoteImg()
-        console.log('here');
         note.info = noteInfoToEdit
         noteService.save(note)
             .then(() => {
@@ -22,7 +21,7 @@ export function NoteTypeImg({ loadNotes }) {
             })
     }
 
-    return <section className="note-add">
+    return <section>
         <form onSubmit={saveNote}>
             <input type="text"
                 name="title"
@@ -30,7 +29,7 @@ export function NoteTypeImg({ loadNotes }) {
                 value={noteInfoToEdit.title}
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
-                placeholder="Enter the title..."
+                placeholder="Enter the img title..."
             />
   
             <input type="text"
@@ -40,6 +39,7 @@ export function NoteTypeImg({ loadNotes }) {
                 onChange={handleChange}
                 onClick={(ev) => { ev.stopPropagation() }}
                 placeholder="Enter the img url..."
+                className="img-url-input"
             />
 
             <button hidden={true}></button>

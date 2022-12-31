@@ -3,32 +3,50 @@ const { useState } = React
 import { noteService } from "../services/note.service.js"
 
 import { NoteTypeImg } from "./note-type-img.jsx"
+import { NoteTypeTodos } from "./note-type-todos.jsx"
 import { NoteTypeTxt } from "./note-type-txt.jsx"
 
 
 
 export function NoteAdd({ loadNotes }) {
     const [typeNoteToEdit, setTypeNoteToEdit] = useState('note-txt')
+    let type
 
-    function DynamicCmp({typeNoteToEdit}) {
+    switch (typeNoteToEdit) {
+        case 'note-txt':
+            type = 'txt'
+            break
+        case 'note-img':
+            type = 'img'
+            break
+        case 'note-todos':
+            type = 'todos'
+            break
+    }
+
+    function DynamicCmp({ typeNoteToEdit }) {
         switch (typeNoteToEdit) {
             case 'note-txt':
                 return <NoteTypeTxt loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
-    
+
             case 'note-img':
                 return <NoteTypeImg loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
+
+            case 'note-todos':
+                return <NoteTypeTodos loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
         }
     }
-    
 
 
-    return <section className="note-add">
+
+    return <section className={`note-add ${type}`} >
+
 
         <DynamicCmp typeNoteToEdit={typeNoteToEdit} />
 
         <button onClick={() => setTypeNoteToEdit('note-img')} className="fa-solid img" ></button>
-        <button className="fa-solid video" ></button>
-            {/* <button className="fa-solid img" ></button> */}
+        <button onClick={() => setTypeNoteToEdit('note-video')} className="fa-solid video" ></button>
+        <button onClick={() => setTypeNoteToEdit('note-todos')} className="fa-solid todo" ></button>
 
     </section >
 

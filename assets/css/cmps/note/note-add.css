@@ -13,3 +13,15 @@
 .note-add input:focus-visible {
     outline: none;
 }
+
+.add-input-container .fa-solid.img::before {
+    content: "\f03e";
+}
+
+.add-input-container .fa-solid.video::before {
+    content: "\f03d";
+}
+
+.add-input-container .fa-solid.todo::before {
+    content: "\f03a";
+}

@@ -21,7 +21,7 @@ export function NoteTypeTxt({  loadNotes }) {
             })
     }
 
-    return <section className="note-add">
+    return <section className="note-add-input-txt">
         <form onSubmit={saveNote}>
             <input type="text"
                 name="txt"

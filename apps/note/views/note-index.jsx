@@ -81,10 +81,7 @@ export function NoteIndex() {
 
 
         <div className="add-input-container">
-
             <NoteAdd loadNotes={loadNotes} />
-
-
         </div>
 
         <NoteList notes={notes} loadNotes={loadNotes} onEditNote={onEditNote} onRemoveNote={onRemoveNote} onDuplicatNote={onDuplicatNote} />

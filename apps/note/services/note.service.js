@@ -11,8 +11,10 @@ export const noteService = {
     get,
     getEmptyNoteInfoForTxt,
     getEmptyNoteInfoForImg,
+    getEmptyNoteInfoForTodos,
     getEmptyNoteTxt,
     getEmptyNoteImg,
+    getEmptyNoteTodos,
 
 }
 
@@ -20,6 +22,7 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
+        if (note.type === 'note-todos') note.info.todos.forEach((todo) => todo.id = utilService.makeId())
         return storageService.post(NOTE_KEY, note)
     }
 }
@@ -36,6 +39,10 @@ function getEmptyNoteInfoForImg() {
     return { title: '', url: '' }
 }
 
+function getEmptyNoteInfoForTodos() {
+    return { title: '', todos: [] }
+}
+
 function getEmptyNoteTxt() {
     return {
         type: "note-txt", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
@@ -45,6 +52,12 @@ function getEmptyNoteTxt() {
 function getEmptyNoteImg() {
     return {
         type: "note-img", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
+    }
+}
+
+function getEmptyNoteTodos() {
+    return {
+        type: "note-todos", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
     }
 }
 
@@ -86,6 +99,7 @@ function _createNote() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [{
+
                         txt: 'Driving liscence',
                         doneAt: null
                     },

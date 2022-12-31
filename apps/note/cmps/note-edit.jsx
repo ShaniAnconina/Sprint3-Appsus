@@ -8,11 +8,9 @@ export function NoteEdit({ noteToEdit, setNoteToEdit, onRemoveNote }) {
     const [noteInfoToEdit, setNoteInfoToEdit] = useState(noteToEdit.info)
     const [notestyleToEdit, setNoteIstyleToEdit] = useState(noteToEdit.style)
 
-
     function closeEditScreen() {
         saveEditNote()
     }
-
 
     function handleChange({ target }) {
         let { value, type, name: field } = target
