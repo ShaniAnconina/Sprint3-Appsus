@@ -15,7 +15,6 @@ export const noteService = {
     getEmptyNoteTxt,
     getEmptyNoteImg,
     getEmptyNoteTodos,
-
 }
 
 function save(note) {
@@ -45,19 +44,19 @@ function getEmptyNoteInfoForTodos() {
 
 function getEmptyNoteTxt() {
     return {
-        type: "note-txt", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
+        type: "note-txt", isPinned: false, style: { backgroundColor: "#fff" }
     }
 }
 
 function getEmptyNoteImg() {
     return {
-        type: "note-img", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
+        type: "note-img", isPinned: false, style: { backgroundColor: "#fff"  }
     }
 }
 
 function getEmptyNoteTodos() {
     return {
-        type: "note-todos", isPinned: false, style: { backgroundColor: utilService.getRandomColor() }
+        type: "note-todos", isPinned: false, style: { backgroundColor: "#fff"  }
     }
 }
 
@@ -74,7 +73,6 @@ function _createNote() {
     if (!notes || !notes.length) {
         notes = [
             {
-                id: 'n101',
                 createdAt: 1112222,
                 type: 'note-txt',
                 isPinned: true,
@@ -83,7 +81,6 @@ function _createNote() {
             },
 
             {
-                id: 'n102',
                 type: 'note-img',
                 isPinned: false,
                 info: {
@@ -92,9 +89,19 @@ function _createNote() {
                 },
                 style: { backgroundColor: '#00d' }
             },
+
             {
-                id: 'n103'
-                , type: 'note-todos',
+                type: 'note-video',
+                isPinned: false,
+                info: {
+                    url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
+                    title: 'Bobi and Me'
+                },
+                style: { backgroundColor: '#00d' }
+            },
+
+            {
+                type: 'note-todos',
                 isPinned: false,
                 info: {
                     title: 'Get my stuff together',
@@ -108,11 +115,21 @@ function _createNote() {
                         doneAt: 187111111
                     }]
                 }
-            }
+            },
+            {
+                type: 'note-video',
+                isPinned: false,
+                info: {
+                    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/dash/SintelVideo.mp4',
+                    title: 'Best movie ever'
+                },
+                style: { backgroundColor: '#00d' }
+            },
         ]
 
         notes.forEach((note) => {
-            note.style = { backgroundColor: utilService.getRandomColor() }
+            note.id = utilService.makeId()
+            note.style = { backgroundColor: "#fff" }
             if (note.type === 'note-todos') note.info.todos.forEach((todo) => todo.id = utilService.makeId())
         })
         utilService.saveToStorage(NOTE_KEY, notes)

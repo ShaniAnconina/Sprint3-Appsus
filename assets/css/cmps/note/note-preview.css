@@ -18,6 +18,11 @@
     height: auto;
 }
 
+.note-vid {
+    height: auto;
+    width: 100%;
+}
+
 .note-preview {
     display: flex;
     flex-direction: column;

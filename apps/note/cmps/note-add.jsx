@@ -5,6 +5,7 @@ import { noteService } from "../services/note.service.js"
 import { NoteTypeImg } from "./note-type-img.jsx"
 import { NoteTypeTodos } from "./note-type-todos.jsx"
 import { NoteTypeTxt } from "./note-type-txt.jsx"
+import { NoteTypeVideo } from "./note-type-video.jsx"
 
 
 
@@ -19,6 +20,9 @@ export function NoteAdd({ loadNotes }) {
         case 'note-img':
             type = 'img'
             break
+        case 'note-video':
+            type = 'video'
+            break
         case 'note-todos':
             type = 'todos'
             break
@@ -31,6 +35,9 @@ export function NoteAdd({ loadNotes }) {
 
             case 'note-img':
                 return <NoteTypeImg loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
+
+            case 'note-video':
+                return <NoteTypeVideo loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
 
             case 'note-todos':
                 return <NoteTypeTodos loadNotes={loadNotes} setTypeNoteToEdit={setTypeNoteToEdit} />;
