@@ -10,7 +10,7 @@ export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, se
     return <section className="mail-folder-list">
         <div className="menu-logo">
             <button className="fa-solid hamburger" ></button>
-            <img src="../../assets/img/icons/Gmail_icon.png" />
+            <img src="./assets/img/icons/Gmail_icon.png" />
             <p>Gmail</p>
         </div>
         <button onClick={() => setIsModal(true)} title='Compose new email' className="fa-solid compose"><p className='text'>Compose</p></button>
