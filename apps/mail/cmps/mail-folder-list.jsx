@@ -18,7 +18,7 @@ export function MailFolderList({ countUnreadedMails, setIsModal, setFilterBy, se
             <button className="inbox" onClick={() => onFilterFolders('inbox')} ><span className="fa-solid inbox-icon"></span>Inbox<span className="count-unread-mails">{countUnreadedMails}</span></button>
             <button className="sent" onClick={() => onFilterFolders('sent')} ><span className="fa-regular sent-icon"></span>Sent</button>
             <button className="trash" onClick={() => onFilterFolders('trash')} ><span className="fa-regular trash-icon"></span>Trash</button>
-            <button className="draft" onClick={() => onFilterFolders('draft')} ><span className="fa-regular draft-icon"></span>Draft</button>
+            {/* <button className="draft" onClick={() => onFilterFolders('draft')} ><span className="fa-regular draft-icon"></span>Draft</button> */}
         </div>
     </section>
 }
